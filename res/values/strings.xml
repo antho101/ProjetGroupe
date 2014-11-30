@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ProjetGroupe</string>
+    <string name="app_name">BlockNote</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!-- ================== login - register ================== -->
+    <string name="label_mail">Mail</string>
+    <string name="label_password">Password</string>
+    <string name="button_connexion">sign in</string>
+    <string name="label_lostpassword">• Lost password ?</string>
+    <string name="label_register">• Create a new account</string>
+    <string name="label_retype">re-type</string>
+    <string name="label_cgu">I agree with the CGU</string>
+    <string name="button_register">Register</string>
 
 </resources>
