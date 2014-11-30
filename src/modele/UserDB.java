@@ -14,8 +14,8 @@ public class UserDB extends User implements CRUD {
         super(id_user);
     }
 
-    public UserDB(String pseudo, String password) {
-        super(pseudo, password);
+    public UserDB(String mail, String password) {
+        super(mail, password);
     }
 
     public UserDB(String pseudo, String mail, String password) {
@@ -125,8 +125,8 @@ public class UserDB extends User implements CRUD {
         }
     }
 
-    public int checkLogin() throws Exception {
-    	int a;
+    public boolean checkLogin() throws Exception {
+    	boolean a = false;
         CallableStatement cstmt = null;
         try {
             String query1 = "select * from users where pseudo = ? and password = ?";
@@ -139,9 +139,8 @@ public class UserDB extends User implements CRUD {
                 pseudo = rs.getString(2);
                 mail = rs.getString(3);
                 password = rs.getString(4);
-                a=1;
+                a=true;
             } else {
-            	a=0;
                 id_user = -1;
                 System.out.println("Aucun utilisateur avec ce pseudo & mot de passe.");
             }

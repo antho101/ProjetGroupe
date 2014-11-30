@@ -18,10 +18,10 @@ public class User {
         this.listCarnet = new ArrayList();
     }
 
-    public User(String pseudo, String password) {
+    public User(String mail, String password) {
         this.id_user = -1;
-        this.pseudo = pseudo;
-        this.mail = "";
+        this.pseudo = "";
+        this.mail = mail;
         this.password = password;
         this.listCarnet = new ArrayList();
     }
