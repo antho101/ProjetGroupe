@@ -34,7 +34,8 @@ public class CategorieDB extends Categorie implements CRUD {
         super(id_categorie, label, couleur);
     }
 
-    public void create() throws Exception {
+    @Override
+	public void create() throws Exception {
         CallableStatement cstmt = null;
         try {
             String query1 = "call createcategorie(?,?)";
@@ -62,7 +63,8 @@ public class CategorieDB extends Categorie implements CRUD {
         }
     }
 
-    public void read() throws Exception {
+    @Override
+	public void read() throws Exception {
 
         CallableStatement cstmt = null;
         try {
@@ -92,7 +94,8 @@ public class CategorieDB extends Categorie implements CRUD {
         }
     }
 
-    public void update() throws Exception {
+    @Override
+	public void update() throws Exception {
         CallableStatement cstmt = null;
 
         try {
@@ -114,7 +117,8 @@ public class CategorieDB extends Categorie implements CRUD {
         }
     }
 
-    public void delete() throws Exception {
+    @Override
+	public void delete() throws Exception {
 
         CallableStatement cstmt = null;
         try {

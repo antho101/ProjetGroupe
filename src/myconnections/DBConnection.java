@@ -12,7 +12,7 @@ public class DBConnection {
  
   public DBConnection(){
           PropertyResourceBundle properties = (PropertyResourceBundle)
-PropertyResourceBundle.getBundle("resources.application");
+ResourceBundle.getBundle("resources.application");
 //nom du fichier properties � utiliser
 serverName=properties.getString("cours.DB.server");
 dbName =properties.getString("cours.DB.database");
