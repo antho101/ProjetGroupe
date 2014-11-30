@@ -31,7 +31,6 @@ public class connexion extends Activity{
 					UserDB u =new UserDB(log2,mdp2);
 					try {
 						u.checkLogin();
-						System.out.print("oke j'ai checké : "+log2);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
