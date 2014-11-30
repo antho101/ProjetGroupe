@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">BlockNote</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Youpie tu es connecté !</string>
     <string name="action_settings">Settings</string>
     <!-- ================== login - register ================== -->
     <string name="label_mail">Mail</string>

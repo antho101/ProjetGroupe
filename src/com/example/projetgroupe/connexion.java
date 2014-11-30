@@ -16,12 +16,13 @@ public class connexion extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.accueil);
 		log=(EditText) findViewById(R.id.mail);
 		log2=log.getText().toString();
 		mdp=(EditText) findViewById(R.id.password);
 		mdp2=mdp.getText().toString();
 		button1= (Button)findViewById(R.id.button1);
+		
 		button1.setOnClickListener(
 			new View.OnClickListener() {
 				
