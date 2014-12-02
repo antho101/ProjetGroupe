@@ -157,7 +157,7 @@ public class NoteDB extends Note implements CRUD {
     }
 
     public static ArrayList<NoteDB> getCarnet(int var) throws Exception {
-        ArrayList<NoteDB> list = new ArrayList<>();
+        ArrayList<NoteDB> list = new ArrayList();
         CallableStatement cstmt = null;
         try {
             boolean trouve = false;

@@ -135,7 +135,7 @@ public class CarnetDB extends Carnet implements CRUD {
     }
 
     public static ArrayList<CarnetDB> getUser(int var) throws Exception {
-        ArrayList<CarnetDB> list = new ArrayList<>();
+        ArrayList<CarnetDB> list = new ArrayList();
         CallableStatement cstmt = null;
         try {
             boolean trouve = false;

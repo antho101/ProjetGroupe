@@ -13,5 +13,13 @@
     <string name="label_retype">re-type</string>
     <string name="label_cgu">I agree with the CGU</string>
     <string name="button_register">Register</string>
+    <string name="title_activity_accueil">Accueil</string>
+    <string name="title_section1">Accueil</string>
+    <string name="title_section2">Carnet</string>
+    <string name="title_section3">Mon compte</string>
+    <string name="title_section4">Deconnexion</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">+</string>
 
 </resources>
