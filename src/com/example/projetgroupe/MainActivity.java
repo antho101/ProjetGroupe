@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
+		setContentView(R.layout.activity_login);
 		button1 = (Button) findViewById(R.id.button1);
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -78,6 +78,9 @@ public class MainActivity extends Activity {
 			mdp = (EditText) findViewById(R.id.password);
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
+			//ligne pour éviter de tapper h24 les logins quand on try le projet
+			logTmp = "alex7170@gmail.com";
+			mdpTmp = "azerty";
 			try {
 
 				u = new UserDB(logTmp, mdpTmp);

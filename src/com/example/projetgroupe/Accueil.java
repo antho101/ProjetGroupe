@@ -1,21 +1,25 @@
 package com.example.projetgroupe;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class Accueil extends ActionBarActivity implements
@@ -45,6 +49,32 @@ public class Accueil extends ActionBarActivity implements
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
+
+	}
+
+	private class StableArrayAdapter extends ArrayAdapter<String> {
+
+		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+
+		public StableArrayAdapter(Context context, int textViewResourceId,
+				List<String> objects) {
+			super(context, textViewResourceId, objects);
+			for (int i = 0; i < objects.size(); ++i) {
+				mIdMap.put(objects.get(i), i);
+			}
+		}
+
+		@Override
+		public long getItemId(int position) {
+			String item = getItem(position);
+			return mIdMap.get(item);
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			return true;
+		}
+
 	}
 
 	@Override
@@ -58,16 +88,19 @@ public class Accueil extends ActionBarActivity implements
 	}
 
 	public void onSectionAttached(int number) {
+		System.out.println("number : " + number);
 		switch (number) {
-		case 1:
+		case 1:// Accueil
 			mTitle = getString(R.string.title_section1);
 			break;
-		case 2:
+		case 2:// Carnet
 			mTitle = getString(R.string.title_section2);
 			break;
-		case 3:
+		case 3:// Mon compte
 			mTitle = getString(R.string.title_section3);
 			break;
+		case 4:// Deconnexion
+			Accueil.this.finish();
 		}
 	}
 
@@ -132,6 +165,7 @@ public class Accueil extends ActionBarActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_accueil,
 					container, false);
+
 			return rootView;
 		}
 
@@ -141,6 +175,6 @@ public class Accueil extends ActionBarActivity implements
 			((Accueil) activity).onSectionAttached(getArguments().getInt(
 					ARG_SECTION_NUMBER));
 		}
-	}
 
+	}
 }
