@@ -18,8 +18,27 @@
     <string name="title_section2">Carnet</string>
     <string name="title_section3">Mon compte</string>
     <string name="title_section4">Deconnexion</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">+</string>
+    <string name="title_activity_fragment_accueil">Lolol</string>
+    
+    
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Accueil</item>
+        <item >Carnet</item>
+        <item >Mon compte</item>
+        <item >Deconnexion</item>
+    </string-array>
+     
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/icon_accueil</item>
+        <item>@drawable/icon_carnet</item>
+        <item>@drawable/icon_moncompte</item>
+        <item>@drawable/icon_deconnexion</item>
+    </array>
+     
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
 
 </resources>

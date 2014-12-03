@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 			mdp = (EditText) findViewById(R.id.password);
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
-			//ligne pour éviter de tapper h24 les logins quand on try le projet
+			// ligne pour éviter de tapper h24 les logins quand on try le projet
 			logTmp = "alex7170@gmail.com";
 			mdpTmp = "azerty";
 			try {
@@ -103,7 +103,8 @@ public class MainActivity extends Activity {
 			pgd.dismiss();
 			if (ok) {
 				pgd.dismiss();
-				Intent accueilIndent = new Intent(MainActivity.this, Accueil.class);
+				System.out.println("Démmarage de l'appz");
+				Intent accueilIndent = new Intent(MainActivity.this, ActivityPrincipale.class);
 				startActivity(accueilIndent);
 			} else {
 				pgd.setMessage("Login & Mot de passe incorrecte !");
