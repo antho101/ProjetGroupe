@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ActivityPrincipale extends Activity {
 	private DrawerLayout mDrawerLayout;
@@ -174,7 +175,7 @@ public class ActivityPrincipale extends Activity {
 			setTitle(navMenuTitles[position]);
 			mDrawerLayout.closeDrawer(mDrawerList);
 		}else{
-			Log.e("MainActivity", "Erreur de création de fragment !");
+			Toast.makeText(getApplicationContext(), "Une erreur inattendue est survenue !", Toast.LENGTH_SHORT).show();
 		}
 	}
 

@@ -89,8 +89,8 @@ public class MainActivity extends Activity {
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
 			// ligne pour éviter de tapper h24 les logins quand on try le projet
-			// logTmp = "alex7170@gmail.com";
-			// mdpTmp = "azerty";
+			 logTmp = "alex7170@gmail.com";
+			 mdpTmp = "azerty";
 			if (!logTmp.isEmpty()) {
 				if (!mdpTmp.isEmpty()) {
 					try {
