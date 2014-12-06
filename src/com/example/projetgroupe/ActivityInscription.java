@@ -40,9 +40,7 @@ public class ActivityInscription extends Activity {
 		btn_register_b.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent Menu_depart = new Intent(ActivityInscription.this,
-						MainActivity.class);
-				startActivity(Menu_depart);
+				ActivityInscription.this.finish();
 			}
 		});
 
@@ -52,9 +50,11 @@ public class ActivityInscription extends Activity {
 		private String resultat = "";
 		private ProgressDialog pgd = null;
 		private boolean ok = false;
+		ActivityInscription activityParent = null;
 
 		public MyAccesInscriptionDB(ActivityInscription activityInscription) {
 			// TODO Auto-generated constructor stub
+			activityParent = activityInscription;
 		}
 
 		public MyAccesInscriptionDB(MainActivity pActivity) {
@@ -110,7 +110,7 @@ public class ActivityInscription extends Activity {
 							try {
 								u = new UserDB(pseudoTmp, logTmp, mdpTmp);
 								u.create();
-								resultat = "Inscription réussi ! ";
+								ok = true;
 
 							} catch (Exception e) {
 								resultat = e.getMessage();
@@ -145,13 +145,9 @@ public class ActivityInscription extends Activity {
 			pgd.dismiss();
 			if (ok) {
 				pgd.dismiss();
-				System.out.println("Démmarage de l'appz");
-				Toast.makeText(getApplicationContext(), "Veuillez vous connecter",
+				Toast.makeText(getApplicationContext(), "Inscription réussi, veuillez vous connecter !",
 						Toast.LENGTH_SHORT).show();
-				Intent Menu_depart = new Intent(ActivityInscription.this,
-						MainActivity.class);
-				
-				startActivity(Menu_depart);
+				activityParent.finish();
 			} else {
 				Toast.makeText(getApplicationContext(), resultat,
 						Toast.LENGTH_SHORT).show();

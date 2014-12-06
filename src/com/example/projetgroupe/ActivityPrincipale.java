@@ -1,7 +1,6 @@
 package com.example.projetgroupe;
 
 import java.util.ArrayList;
-
 import modele.NavDrawerItem;
 import adapter.NavDrawerListAdapter;
 import android.app.Activity;
@@ -12,7 +11,6 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
