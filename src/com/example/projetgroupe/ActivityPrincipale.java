@@ -1,11 +1,14 @@
 package com.example.projetgroupe;
 
 import java.util.ArrayList;
+
 import modele.NavDrawerItem;
 import adapter.NavDrawerListAdapter;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ActivityPrincipale extends Activity {
+	final String UserID="";
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -136,6 +140,19 @@ public class ActivityPrincipale extends Activity {
 		// Handle action bar actions click
 		switch (item.getItemId()) {
 		case R.id.action_settings:
+			AlertDialog.Builder boite;
+            boite = new AlertDialog.Builder(this);
+            boite.setTitle("A propos");
+            boite.setIcon(R.drawable.ic_launcher);
+                boite.setMessage("Developpeur: \n\n Anthony Lattuca: anthony.lattuca@condorcet.be \n\n Alexandre Rosati: alexandre.rosati@condorcet.be");
+            boite.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+               
+                public void onClick(DialogInterface dialog, int which) {
+               
+                }
+                }
+            );
+            boite.show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -163,7 +180,8 @@ public class ActivityPrincipale extends Activity {
 		case 1:// Carnet
 			fragment = new CarnetFragment();
 			break;
-		case 2:// moncompte
+		case 2:
+			fragment= new MonCompteFragment();
 			break;
 		case 3: // deconnexion
 			this.finish();

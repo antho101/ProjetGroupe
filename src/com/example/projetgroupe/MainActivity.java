@@ -16,13 +16,15 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private Connection con = null;
-
+	
 	private Button button1 = null, button2 = null;
 	private EditText log, mdp;
 	private String logTmp, mdpTmp;
 	UserDB u = null;
 
 	public final static int CHOOSE_BUTTON_REQUEST = 0;
+
+	final String UserID="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +128,7 @@ public class MainActivity extends Activity {
 				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this,
 						ActivityPrincipale.class);
+				accueilIndent.putExtra(UserID, u.toString());
 				startActivity(accueilIndent);
 			} else {
 				Toast.makeText(getApplicationContext(), resultat, Toast.LENGTH_SHORT).show();

@@ -5,13 +5,13 @@
     android:background="#333f4f"
     android:orientation="vertical" >
 
-    <!-- <ImageView
+    <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="center"
         android:src="@drawable/register"
-        android:layout_marginTop="10dp" /> -->
+        android:layout_marginTop="10dp" /> 
 
     <EditText
         android:id="@+id/Pseudo"
