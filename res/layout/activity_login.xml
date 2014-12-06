@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
         android:layout_gravity="center"
-        android:layout_marginTop="50dip" />
+        android:layout_marginTop="0dip" />
 
     <EditText
         android:id="@+id/mail"
@@ -23,7 +23,7 @@
         android:hint="@string/label_mail"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:layout_marginTop="50dip"
+        android:layout_marginTop="10dip"
         />
 
     <EditText
@@ -43,9 +43,19 @@
         android:layout_width="200dip"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="30dip"
         android:background="#019875"
         android:textColor="#fff"
         android:text="@string/button_connexion" />
+	
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dip"
+        android:background="#019875"
+        android:text="Inscription"
+        android:textColor="#fff" />
 
 </LinearLayout>

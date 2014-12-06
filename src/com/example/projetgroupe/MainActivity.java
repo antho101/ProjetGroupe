@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private Connection con = null;
 
-	private Button button1 = null;
+	private Button button1 = null,button2=null;
 	private EditText log, mdp;
 	private String logTmp, mdpTmp;
 	UserDB u = null;
@@ -36,8 +36,16 @@ public class MainActivity extends Activity {
 				adb.execute();
 			}
 		});
+		button2 = (Button) findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent inscriptionIndent = new Intent(MainActivity.this, InscriptionFragment.class);
+				startActivity(inscriptionIndent);
+			}
+		});
 	}
-
+	
 	class MyAccesDB extends AsyncTask<String, Integer, Boolean> {
 		private String resultat;
 		private ProgressDialog pgd = null;
@@ -79,22 +87,41 @@ public class MainActivity extends Activity {
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
 			// ligne pour éviter de tapper h24 les logins quand on try le projet
-			logTmp = "alex7170@gmail.com";
-			mdpTmp = "azerty";
-			try {
+			//logTmp = "alex7170@gmail.com";
+			//mdpTmp = "azerty";
+			System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
+			if(!logTmp.isEmpty()){
+				System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
 
-				u = new UserDB(logTmp, mdpTmp);
-				if (u.checkLogin()) {
-					ok = true;
+				if(!mdpTmp.isEmpty()){
+					try {
+						System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
+
+						u = new UserDB(logTmp, mdpTmp);
+						if (u.checkLogin()) {
+							ok = true;
+						}
+						
+
+					} catch (Exception e) {
+						resultat = "erreur" + e.getMessage();
+						ok= false;
+						pgd.setMessage("Login & Mot de passe incorrecte !");
+						pgd.show();
+					}
+					
 				}
-
-			} catch (Exception e) {
-				resultat = "erreur" + e.getMessage();
-				return false;
-
+				else{
+					//Toast.makeText(getApplicationContext(), "Veuillez entrez votre mot de passe", Toast.LENGTH_LONG).show();
+					ok= false;
+					Toast.makeText(getApplicationContext(), "Veuillez entrez votre mot de passe " , Toast.LENGTH_SHORT).show();
+				}
 			}
-
-			return true;
+			else{
+				ok= false;
+				//Toast.makeText(getApplicationContext(), "Veuillez entrez votre login", Toast.LENGTH_LONG).show();
+			}
+			return ok;
 		}
 
 		protected void onPostExecute(Boolean result) {
@@ -106,10 +133,7 @@ public class MainActivity extends Activity {
 				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this, ActivityPrincipale.class);
 				startActivity(accueilIndent);
-			} else {
-				pgd.setMessage("Login & Mot de passe incorrecte !");
-				pgd.show();
-			}
+			} 
 		}
 
 	}
