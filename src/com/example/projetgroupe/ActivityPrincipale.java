@@ -111,17 +111,18 @@ public class ActivityPrincipale extends Activity {
 			displayView(0);
 		}
 	}
-	private class SlideMenuClickListener implements OnItemClickListener{
+
+	private class SlideMenuClickListener implements OnItemClickListener {
 
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			displayView(arg2);
-			
+
 		}
-		
+
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -155,27 +156,42 @@ public class ActivityPrincipale extends Activity {
 	}
 
 	private void displayView(int position) {
+		boolean logout = false;
 		Fragment fragment = null;
-		Log.e("position", "var="+position);
 		switch (position) {
-		case 0:
+		case 0:// Accueil
 			fragment = new AccueilFragment();
 			break;
-		case 1:
+		case 1:// Carnet
 			fragment = new CarnetFragment();
+			break;
+		case 2:// moncompte
+			break;
+		case 3: // deconnexion
+			this.finish();
+			logout = true;
 			break;
 		default:
 			break;
 		}
-		if(fragment != null){
+		if (fragment != null) {
 			FragmentManager fragmentManage = getFragmentManager();
-			fragmentManage.beginTransaction().replace(R.id.frame_container, fragment).commit();
+			fragmentManage.beginTransaction()
+					.replace(R.id.frame_container, fragment).commit();
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
 			setTitle(navMenuTitles[position]);
 			mDrawerLayout.closeDrawer(mDrawerList);
-		}else{
-			Toast.makeText(getApplicationContext(), "Une erreur inattendue est survenue !", Toast.LENGTH_SHORT).show();
+		} else {
+			if (logout) {
+				Toast.makeText(getApplicationContext(),
+						"Déconnexion réussis !", Toast.LENGTH_SHORT).show();
+				logout = false;
+			} else {
+				Toast.makeText(getApplicationContext(),
+						"Une erreur inattendue est survenue !",
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 
