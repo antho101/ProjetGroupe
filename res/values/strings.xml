@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">BlockNote</string>
-    <string name="hello_world">Youpie tu es connecté !</string>
+    <string name="hello_world">Nouvelle fenetre :D !</string>
     <string name="action_settings">Settings</string>
     <!-- ================== login - register ================== -->
     <string name="label_mail">Mail</string>
@@ -14,6 +14,7 @@
     <string name="label_cgu">I agree with the CGU</string>
     <string name="button_register">Register</string>
     <string name="title_activity_accueil">Accueil</string>
+    <string name="title_activity_inscription">Inscription</string>
     <string name="title_section1">Accueil</string>
     <string name="title_section2">Carnet</string>
     <string name="title_section3">Mon compte</string>

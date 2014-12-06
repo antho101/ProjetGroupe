@@ -20,7 +20,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,6 +27,9 @@
             android:name=".ActivityPrincipale"
             android:label="@string/title_activity_accueil" >
         </activity>
+        <activity
+            android:name=".ActivityInscription"
+            android:label="@string/title_activity_inscription" >
+        </activity>
     </application>
-
 </manifest>

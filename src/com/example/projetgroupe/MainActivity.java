@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		button1 = (Button) findViewById(R.id.button1);
+		button1 = (Button) findViewById(R.id.btn_login);
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -36,11 +36,12 @@ public class MainActivity extends Activity {
 				adb.execute();
 			}
 		});
-		button2 = (Button) findViewById(R.id.button2);
+		button2 = (Button) findViewById(R.id.btn_register);
 		button2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent inscriptionIndent = new Intent(MainActivity.this, InscriptionFragment.class);
+				System.out.println("Inscription");
+				Intent inscriptionIndent = new Intent(MainActivity.this, ActivityInscription.class);
 				startActivity(inscriptionIndent);
 			}
 		});

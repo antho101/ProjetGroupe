@@ -51,7 +51,7 @@
         />
 
 	<Button
-	    android:id="@+id/button1"
+	    android:id="@+id/btn_login"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
@@ -61,7 +61,7 @@
 	    android:textColor="#fff" />
 
 	<Button
-	    android:id="@+id/button2"
+	    android:id="@+id/btn_register"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
