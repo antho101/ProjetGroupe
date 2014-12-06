@@ -5,13 +5,13 @@
     android:background="#333f4f"
     android:orientation="vertical" >
 
-    <ImageView
+    <!-- <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="center"
         android:src="@drawable/register"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp" /> -->
 
     <EditText
         android:id="@+id/Pseudo"
@@ -19,9 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dip"
         android:ems="10"
-        android:hint="Pseudo"
+        android:hint="@string/label_pseudo"
         android:inputType="text"
-        android:text="Pseudo"
         android:textColor="#fff"
         android:textColorHint="#fff" >
 
@@ -52,23 +51,23 @@
         />
 
 	<Button
-	    android:id="@+id/btn_register_submit"
+	    android:id="@+id/btn_register_sub"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:layout_marginTop="20dip"
 	    android:background="#019875"
-	    android:text="Inscription"
+	    android:text="@string/btn_register_submit"
 	    android:textColor="#fff" />
 
 	<Button
-	    android:id="@+id/btn_register_back"
+	    android:id="@+id/btn_register_b"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:layout_marginTop="20dip"
 	    android:background="#019875"
-	    android:text="Retour"
+	    android:text="@string/btn_register_back"
 	    android:textColor="#fff" />
 
 </LinearLayout>

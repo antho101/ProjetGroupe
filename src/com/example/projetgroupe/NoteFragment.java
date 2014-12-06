@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class NoteFragment extends Fragment {
-
+	
 	public NoteFragment() {
 	}
 

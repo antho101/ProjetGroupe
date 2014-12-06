@@ -13,6 +13,13 @@
     <string name="label_retype">re-type</string>
     <string name="label_cgu">I agree with the CGU</string>
     <string name="button_register">Register</string>
+    <string name="label_pseudo">pseudo</string>
+    <string name="btn_register_submit">• Inscription</string>
+	<string name="btn_register_back">• Retour</string>
+	<string name="btn_register_submit_connection">• Inscription</string>
+    
+    <!-- ================== Autres ================== -->
+    
     <string name="title_activity_accueil">Accueil</string>
     <string name="title_activity_inscription">Inscription</string>
     <string name="title_section1">Accueil</string>

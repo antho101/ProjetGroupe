@@ -55,7 +55,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dip"
         android:background="#019875"
-        android:text="Inscription"
+        android:text="@string/btn_register_submit_connection"
         android:textColor="#fff" />
 
 </LinearLayout>
