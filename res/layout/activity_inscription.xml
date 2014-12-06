@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        android:src="@drawable/register" />
+        android:src="@drawable/register"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/Pseudo"
@@ -51,7 +52,7 @@
         />
 
 	<Button
-	    android:id="@+id/btn_login"
+	    android:id="@+id/btn_register_submit"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
@@ -61,7 +62,7 @@
 	    android:textColor="#fff" />
 
 	<Button
-	    android:id="@+id/btn_register"
+	    android:id="@+id/btn_register_back"
 	    android:layout_width="200dip"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"

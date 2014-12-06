@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private Connection con = null;
 
-	private Button button1 = null,button2=null;
+	private Button button1 = null, button2 = null;
 	private EditText log, mdp;
 	private String logTmp, mdpTmp;
 	UserDB u = null;
@@ -41,14 +41,15 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				System.out.println("Inscription");
-				Intent inscriptionIndent = new Intent(MainActivity.this, ActivityInscription.class);
+				Intent inscriptionIndent = new Intent(MainActivity.this,
+						ActivityInscription.class);
 				startActivity(inscriptionIndent);
 			}
 		});
 	}
-	
+
 	class MyAccesDB extends AsyncTask<String, Integer, Boolean> {
-		private String resultat;
+		private String resultat = "";
 		private ProgressDialog pgd = null;
 		private boolean ok = false;
 
@@ -77,7 +78,7 @@ public class MainActivity extends Activity {
 			if (con == null) {// premier invocation
 				con = new DBConnection().getConnection();
 				if (con == null) {
-					resultat = "echec de la connexion";
+					resultat = "Erreur : vérifier la connexion internet !";
 					return false;
 				}
 
@@ -88,39 +89,30 @@ public class MainActivity extends Activity {
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
 			// ligne pour éviter de tapper h24 les logins quand on try le projet
-			//logTmp = "alex7170@gmail.com";
-			//mdpTmp = "azerty";
-			System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
-			if(!logTmp.isEmpty()){
-				System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
-
-				if(!mdpTmp.isEmpty()){
+			// logTmp = "alex7170@gmail.com";
+			// mdpTmp = "azerty";
+			if (!logTmp.isEmpty()) {
+				if (!mdpTmp.isEmpty()) {
 					try {
-						System.out.println("login :"+logTmp+"mdp : "+mdpTmp);
-
 						u = new UserDB(logTmp, mdpTmp);
 						if (u.checkLogin()) {
 							ok = true;
+						} else {
+							resultat = "Login & Mot de passe incorrecte !";
 						}
-						
 
 					} catch (Exception e) {
-						resultat = "erreur" + e.getMessage();
-						ok= false;
-						pgd.setMessage("Login & Mot de passe incorrecte !");
-						pgd.show();
+						resultat = e.getMessage();
+						ok = false;
 					}
-					
+
+				} else {
+					ok = false;
+					resultat = "Veuillez entrez votre mot de passe.";
 				}
-				else{
-					//Toast.makeText(getApplicationContext(), "Veuillez entrez votre mot de passe", Toast.LENGTH_LONG).show();
-					ok= false;
-					Toast.makeText(getApplicationContext(), "Veuillez entrez votre mot de passe " , Toast.LENGTH_SHORT).show();
-				}
-			}
-			else{
-				ok= false;
-				//Toast.makeText(getApplicationContext(), "Veuillez entrez votre login", Toast.LENGTH_LONG).show();
+			} else {
+				ok = false;
+				resultat = "Veuillez entre votre email.";
 			}
 			return ok;
 		}
@@ -132,9 +124,12 @@ public class MainActivity extends Activity {
 			if (ok) {
 				pgd.dismiss();
 				System.out.println("Démmarage de l'appz");
-				Intent accueilIndent = new Intent(MainActivity.this, ActivityPrincipale.class);
+				Intent accueilIndent = new Intent(MainActivity.this,
+						ActivityPrincipale.class);
 				startActivity(accueilIndent);
-			} 
+			} else {
+				Toast.makeText(getApplicationContext(), resultat, Toast.LENGTH_SHORT).show();
+			}
 		}
 
 	}

@@ -166,7 +166,7 @@ public class ActivityPrincipale extends Activity {
 		default:
 			break;
 		}
-		if(fragment == null){
+		if(fragment != null){
 			FragmentManager fragmentManage = getFragmentManager();
 			fragmentManage.beginTransaction().replace(R.id.frame_container, fragment).commit();
 			mDrawerList.setItemChecked(position, true);
