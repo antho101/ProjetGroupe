@@ -26,7 +26,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ActivityPrincipale extends Activity {
-	final String UserID="";
+	final String UserID = "";
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -49,7 +49,7 @@ public class ActivityPrincipale extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		UserDB tmpUser = Session.getUser();
-		System.out.println("user : "+tmpUser.toString());
+		System.out.println("user : " + tmpUser.toString());
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -146,18 +146,16 @@ public class ActivityPrincipale extends Activity {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 			AlertDialog.Builder boite;
-            boite = new AlertDialog.Builder(this);
-            boite.setTitle("A propos");
-            boite.setIcon(R.drawable.ic_launcher);
-                boite.setMessage("Developpeur: \n\n Anthony Lattuca: anthony.lattuca@condorcet.be \n\n Alexandre Rosati: alexandre.rosati@condorcet.be");
-            boite.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-               
-                public void onClick(DialogInterface dialog, int which) {
-               
-                }
-                }
-            );
-            boite.show();
+			boite = new AlertDialog.Builder(this);
+			boite.setTitle("A propos");
+			boite.setIcon(R.drawable.ic_launcher);
+			boite.setMessage("Developpeur: \n\n Anthony Lattuca: anthony.lattuca@condorcet.be \n\n Alexandre Rosati: alexandre.rosati@condorcet.be");
+			boite.setPositiveButton("Ok",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+			boite.show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -186,7 +184,7 @@ public class ActivityPrincipale extends Activity {
 			fragment = new CarnetFragment();
 			break;
 		case 2:
-			fragment= new MonCompteFragment();
+			fragment = new MonCompteFragment();
 			break;
 		case 3: // deconnexion
 			this.finish();

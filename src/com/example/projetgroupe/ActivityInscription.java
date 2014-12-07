@@ -83,7 +83,6 @@ public class ActivityInscription extends Activity {
 				con = new DBConnection().getConnection();
 				if (con == null) {
 					resultat = "Erreur : vérifier la connexion internet !";
-					return false;
 				}
 
 				UserDB.setConnection(con);
@@ -94,14 +93,14 @@ public class ActivityInscription extends Activity {
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
 			pseudoTmp = pseudo.getText().toString();
-			logTmp="hh@gmail.be";
-			mdpTmp="hh";
-			pseudoTmp="hh";
+			logTmp = "hh@gmail.be";
+			mdpTmp = "hh";
+			pseudoTmp = "hh";
 			// ligne pour éviter de tapper h24 les logins quand on try le projet
 			// logTmp = "alex7170@gmail.com";
 			// mdpTmp = "azerty";
 			String email = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z]+(\\.[A-Za-z]+)*(\\.[A-Za-z]{2,})$";
-                   
+
 			if (!pseudoTmp.isEmpty()) {
 				if (!logTmp.isEmpty()) {
 					if (logTmp.matches(email)) {
@@ -114,26 +113,19 @@ public class ActivityInscription extends Activity {
 
 							} catch (Exception e) {
 								resultat = e.getMessage();
-								ok = false;
 							}
 
 						} else {
-							ok = false;
-							resultat = "Veuillez entrez un mot de passe.";						
+							resultat = "Veuillez entrez un mot de passe.";
 						}
-					}
-					else{
-						ok = false;
+					} else {
 						resultat = "Veuillez entrez une adresse email valide.";
-					
 					}
 
 				} else {
-					ok = false;
 					resultat = "Veuillez entre votre email.";
 				}
 			} else {
-				ok = false;
 				resultat = "Veuillez entrez votre pseudo.";
 			}
 			return ok;
@@ -144,8 +136,8 @@ public class ActivityInscription extends Activity {
 
 			pgd.dismiss();
 			if (ok) {
-				pgd.dismiss();
-				Toast.makeText(getApplicationContext(), "Inscription réussi, veuillez vous connecter !",
+				Toast.makeText(getApplicationContext(),
+						"Inscription réussi, veuillez vous connecter !",
 						Toast.LENGTH_SHORT).show();
 				activityParent.finish();
 			} else {

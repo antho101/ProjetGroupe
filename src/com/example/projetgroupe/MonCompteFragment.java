@@ -18,7 +18,7 @@ public class MonCompteFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_moncompte, container,
 				false);
-
+		
 		return rootView;
 	}
 }
