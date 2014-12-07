@@ -8,33 +8,43 @@
         android:id="@+id/moncompte_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+	    android:layout_marginTop="30dip"
         android:src="@drawable/register" />
-
-    <EditText
-        android:id="@+id/moncompte_pseudo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
-        android:ems="10"
-        android:hint="@string/label_pseudo"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/moncompte_password_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:ems="10"
-        android:hint="@string/label_password"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/moncompte_password_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:ems="10"
-        android:hint="@string/label_password"
-        android:inputType="textPassword" />
+	<Button
+	    android:id="@+id/btn_mycompte_pseudochange"
+	    android:layout_width="200dip"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:layout_marginTop="35dip"
+	    android:background="#019875"
+	    android:text="@string/label_password"
+	    android:textColor="#fff" />
+	<Button
+	    android:id="@+id/btn_mycompte_mdpasse"
+	    android:layout_width="200dip"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:layout_marginTop="25dip"
+	    android:background="#019875"
+	    android:text="@string/label_password"
+	    android:textColor="#fff" />
+    <Button
+	    android:id="@+id/btn_mycompte_des"
+	    android:layout_width="200dip"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:layout_marginTop="25dip"
+	    android:background="#019875"
+	    android:text="@string/label_password"
+	    android:textColor="#fff" />
+    <Button
+	    android:id="@+id/btn_mycompte_re"
+	    android:layout_width="200dip"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:layout_marginTop="25dip"
+	    android:background="#019875"
+	    android:text="@string/label_password"
+	    android:textColor="#fff" />
 
 </LinearLayout>
