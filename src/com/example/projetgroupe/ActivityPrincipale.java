@@ -3,12 +3,15 @@ package com.example.projetgroupe;
 import java.util.ArrayList;
 
 import modele.NavDrawerItem;
+import modele.Session;
+import modele.UserDB;
 import adapter.NavDrawerListAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -45,6 +48,8 @@ public class ActivityPrincipale extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		UserDB tmpUser = Session.getUser();
+		System.out.println("user : "+tmpUser.toString());
 
 		mTitle = mDrawerTitle = getTitle();
 

@@ -1,11 +1,12 @@
 package modele;
 
+import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class UserDB extends User implements CRUD {
+public class UserDB extends User implements CRUD, Serializable {
 
 	protected static Connection dbConnect = null;
 

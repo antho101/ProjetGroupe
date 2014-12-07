@@ -2,6 +2,7 @@ package com.example.projetgroupe;
 
 import java.sql.Connection;
 
+import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.Activity;
@@ -21,10 +22,9 @@ public class MainActivity extends Activity {
 	private EditText log, mdp;
 	private String logTmp, mdpTmp;
 	UserDB u = null;
-
+	
 	public final static int CHOOSE_BUTTON_REQUEST = 0;
 
-	final String UserID="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +128,7 @@ public class MainActivity extends Activity {
 				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this,
 						ActivityPrincipale.class);
-				accueilIndent.putExtra(UserID, u.toString());
+				Session.setUser(u);
 				startActivity(accueilIndent);
 			} else {
 				Toast.makeText(getApplicationContext(), resultat, Toast.LENGTH_SHORT).show();
