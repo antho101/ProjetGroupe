@@ -9,8 +9,11 @@ import myconnections.DBConnection;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,16 +26,26 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CarnetFragment extends Fragment {
+import com.example.projetgroupe.ShakeDetector.OnShakeListener;
+
+public class CarnetFragment extends Fragment  {
 	Connection con = null;
 	ListView list_carnet;
 	ArrayList<CarnetDB> list_carnet_obj = null;
 	ArrayList<String> list_carnet_titre = null;
-	EditText nouveauCarnet = null;
+	EditText nouveauCarnet, nouveauCarnet2 = null;
 	AlertDialog alert = null;
 	AjoutCarnetDB acDB = null;
 	GetListCarnetDB glcDB = null;
-
+	ArrayAdapter<String> adapter = null;
+	
+	private ProgressDialog pgd = null;
+	
+	private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+	
+	
 	public CarnetFragment() {
 	}
 
@@ -41,7 +54,25 @@ public class CarnetFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_carnet, container,
 				false);
-		setHasOptionsMenu(true);
+
+		mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+        mShakeDetector.setOnShakeListener(new OnShakeListener() {
+ 
+            @Override
+            public void onShake(int count) {
+                /*
+                 * The following method, "handleShakeEvent(count):" is a stub //
+                 * method you would use to setup whatever you want done once the
+                 * device has been shook.
+                 */
+                handleShakeEvent(count);
+            }
+        });
+		
+		
 		list_carnet_titre = new ArrayList<String>();
 		list_carnet_obj = new ArrayList<CarnetDB>();
 		list_carnet_obj.add(new CarnetDB(1, "Maison", 24, null));
@@ -58,7 +89,7 @@ public class CarnetFragment extends Fragment {
 			}
 		}
 		list_carnet = (ListView) rootView.findViewById(R.id.list_carnet);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+		adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, android.R.id.text1,
 				list_carnet_titre) {
 			@Override
@@ -121,6 +152,29 @@ public class CarnetFragment extends Fragment {
 				});
 		return rootView;
 	}
+
+	protected void handleShakeEvent(int count) {
+		// TODO Auto-generated method stub
+		System.out.println("count "+count);
+		pgd = new ProgressDialog(getActivity());
+		pgd.setMessage("chargement en cours");
+		pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		pgd.show();
+		
+	}
+	@Override
+    public void onResume() {
+        super.onResume();
+        // Add the following line to register the Session Manager Listener onResume
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer,    SensorManager.SENSOR_DELAY_UI);
+    }
+ 
+    @Override
+    public void onPause() {
+        // Add the following line to unregister the Sensor Manager onPause
+        mSensorManager.unregisterListener(mShakeDetector);
+        super.onPause();
+    }
 
 	/*
 	 * ===========================================
@@ -264,4 +318,11 @@ public class CarnetFragment extends Fragment {
 		}
 
 	}
+	/*
+	 * ===========================================
+	 * Refresh
+	 * ===========================================
+	 */
+
+
 }
