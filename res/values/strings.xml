@@ -18,6 +18,13 @@
 	<string name="btn_register_back">• Retour</string>
 	<string name="btn_register_submit_connection">• Inscription</string>
     
+	
+    <!-- ================== mon compte ================== -->
+	<string name="btn_mycompte_pseud">• Changer de pseudo</string>
+	<string name="btn_mycompte_mdp">• Changer votre mot de passe</string>
+	<string name="btn_mycompte_desinscription">• Desinscription</string>
+	<string name="btn_mycompte_return">• Retour</string>
+	
     <!-- ================== Autres ================== -->
     
     <string name="title_activity_accueil">Accueil</string>

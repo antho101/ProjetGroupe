@@ -17,7 +17,7 @@
 	    android:layout_gravity="center"
 	    android:layout_marginTop="35dip"
 	    android:background="#019875"
-	    android:text="@string/label_password"
+	    android:text="@string/btn_mycompte_pseud"
 	    android:textColor="#fff" />
 	<Button
 	    android:id="@+id/btn_mycompte_mdpasse"
@@ -26,7 +26,7 @@
 	    android:layout_gravity="center"
 	    android:layout_marginTop="25dip"
 	    android:background="#019875"
-	    android:text="@string/label_password"
+	    android:text="@string/btn_mycompte_mdp"
 	    android:textColor="#fff" />
     <Button
 	    android:id="@+id/btn_mycompte_des"
@@ -35,7 +35,7 @@
 	    android:layout_gravity="center"
 	    android:layout_marginTop="25dip"
 	    android:background="#019875"
-	    android:text="@string/label_password"
+	    android:text="@string/btn_mycompte_desinscription"
 	    android:textColor="#fff" />
     <Button
 	    android:id="@+id/btn_mycompte_re"
@@ -44,7 +44,7 @@
 	    android:layout_gravity="center"
 	    android:layout_marginTop="25dip"
 	    android:background="#019875"
-	    android:text="@string/label_password"
+	    android:text="@string/btn_mycompte_return"
 	    android:textColor="#fff" />
 
 </LinearLayout>
