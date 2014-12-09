@@ -232,9 +232,9 @@ public class CarnetFragment extends Fragment  {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				Toast.makeText(getActivity(),
-						"le carnet [" + varTmp + "] a été crée !",
-						Toast.LENGTH_SHORT).show();
+				glcDB = new GetListCarnetDB(
+						(ActivityPrincipale) getActivity());
+				glcDB.execute();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
 						.show();
