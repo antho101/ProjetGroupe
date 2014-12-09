@@ -147,11 +147,7 @@ public class CarnetDB extends Carnet implements CRUD {
                 trouve = true;
                 list.add(new CarnetDB(rs.getInt(1), rs.getString(2), rs.getInt(3), null));
             }
-            if (!trouve) {
-                return null;
-            } else {
-                return list;
-            }
+             return list;
         } catch (Exception e) {
             throw new Exception("Erreur: " + e.getMessage());
         } finally {//effectué dans tous les cas 

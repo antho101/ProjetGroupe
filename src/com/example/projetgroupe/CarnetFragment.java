@@ -71,23 +71,12 @@ public class CarnetFragment extends Fragment  {
                 handleShakeEvent(count);
             }
         });
-		
+
 		
 		list_carnet_titre = new ArrayList<String>();
 		list_carnet_obj = new ArrayList<CarnetDB>();
-		list_carnet_obj.add(new CarnetDB(1, "Maison", 24, null));
-		list_carnet_obj.add(new CarnetDB(2, "Ecole", 24, null));
-		list_carnet_obj.add(new CarnetDB(3, "Travail", 24, null));
+		
 
-		if (list_carnet_obj.size() < 5) {
-			list_carnet_titre.add("+ Ajouter un carnet ["
-					+ list_carnet_obj.size() + "/5]");
-		}
-		for (int i = 0; i < 5; i++) {
-			if (i < list_carnet_obj.size()) {
-				list_carnet_titre.add(list_carnet_obj.get(i).getTitre());
-			}
-		}
 		list_carnet = (ListView) rootView.findViewById(R.id.list_carnet);
 		adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, android.R.id.text1,
@@ -150,16 +139,18 @@ public class CarnetFragment extends Fragment  {
 						}
 					}
 				});
+		//chaque fois qu'on va sur le fragment on refresh
+		glcDB = new GetListCarnetDB(
+				(ActivityPrincipale) getActivity());
+		glcDB.execute();
 		return rootView;
 	}
 
 	protected void handleShakeEvent(int count) {
 		// TODO Auto-generated method stub
-		System.out.println("count "+count);
-		pgd = new ProgressDialog(getActivity());
-		pgd.setMessage("chargement en cours");
-		pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		pgd.show();
+		glcDB = new GetListCarnetDB(
+				(ActivityPrincipale) getActivity());
+		glcDB.execute();
 		
 	}
 	@Override
@@ -291,14 +282,15 @@ public class CarnetFragment extends Fragment  {
 				return false;
 			}
 			CarnetDB.setConnection(con);
-			list_carnet = new ArrayList();
+			list_carnet = new ArrayList<CarnetDB>();
 			try {
 				list_carnet = CarnetDB.getUser(Session.getUser().getId_user());
+
+				ok = true;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Carnet count : "+list_carnet.size());
 
 			return ok;
 
@@ -308,6 +300,23 @@ public class CarnetFragment extends Fragment  {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
+				list_carnet_titre.clear();
+				list_carnet_obj = list_carnet;
+
+				if (list_carnet_obj.size() < 5) {
+					list_carnet_titre.add("+ Ajouter un carnet ["
+							+ list_carnet_obj.size() + "/5]");
+				}
+				for (int i = 0; i < 5; i++) {
+					if (i < list_carnet_obj.size()) {
+						list_carnet_titre.add(list_carnet_obj.get(i).getTitre());
+					}
+				}
+				
+				
+				adapter.notifyDataSetChanged();
+
+				
 				Toast.makeText(getActivity(),
 						"Mise a jour",
 						Toast.LENGTH_SHORT).show();
