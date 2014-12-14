@@ -4,6 +4,7 @@
     <string name="app_name">BlockNote</string>
     <string name="hello_world">Nouvelle fenetre :D !</string>
     <string name="action_settings">Settings</string>
+    <string name="action_refresh_data">Update</string>
     <!-- ================== login - register ================== -->
     <string name="label_mail">Mail</string>
     <string name="label_password">Password</string>
