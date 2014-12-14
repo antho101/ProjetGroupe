@@ -132,7 +132,7 @@ public class ActivityPrincipale extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main_activity_menu, menu);
 		return true;
 	}
 
@@ -167,10 +167,13 @@ public class ActivityPrincipale extends Activity {
 	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
+		/*
 		// if nav drawer is opened, hide the action items
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		*/
 		return super.onPrepareOptionsMenu(menu);
+		
 	}
 
 	private void displayView(int position) {
