@@ -5,10 +5,5 @@
         android:icon="@drawable/ic_menu_refresh"
         android:showAsAction="ifRoom"
         android:title="@string/action_refresh_data"/>
-    <item
-        android:id="@+id/action_resfresh_data"
-        android:icon="@drawable/ic_menu_refresh"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_refresh_data"/>
 
 </menu>
