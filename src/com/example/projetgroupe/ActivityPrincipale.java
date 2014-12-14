@@ -48,8 +48,8 @@ public class ActivityPrincipale extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		UserDB tmpUser = Session.getUser();
-		System.out.println("user : " + tmpUser.toString());
+		UserDB tmpUser = (UserDB) getIntent().getSerializableExtra("user");
+		System.out.println(" ok : user : " + tmpUser.toString());
 
 		mTitle = mDrawerTitle = getTitle();
 

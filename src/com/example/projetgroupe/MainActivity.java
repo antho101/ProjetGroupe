@@ -128,7 +128,7 @@ public class MainActivity extends Activity {
 				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this,
 						ActivityPrincipale.class);
-				Session.setUser(u);
+				accueilIndent.putExtra("user", (UserDB)u);
 				startActivity(accueilIndent);
 			} else {
 				Toast.makeText(getApplicationContext(), resultat, Toast.LENGTH_SHORT).show();
