@@ -49,7 +49,12 @@ public class ActivityPrincipale extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		UserDB tmpUser = (UserDB) getIntent().getSerializableExtra("user");
-		System.out.println(" ok : user : " + tmpUser.toString());
+		System.out.println(" ok | user : " + tmpUser.toString());
+		tmpUser.setPseudo("fdp");
+		getIntent().putExtra("user", (UserDB)tmpUser);
+		System.out.println(" setname=fdp | user : " + tmpUser.toString());
+		tmpUser = (UserDB) getIntent().getSerializableExtra("user");
+		System.out.println(" GetAfterEdit | user : " + tmpUser.toString());
 
 		mTitle = mDrawerTitle = getTitle();
 
