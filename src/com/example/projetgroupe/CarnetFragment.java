@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import modele.CarnetDB;
 import modele.Session;
+import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -72,6 +73,8 @@ public class CarnetFragment extends Fragment  {
             }
         });
 
+		UserDB tmpUser = (UserDB) getActivity().getIntent().getSerializableExtra("user");
+		System.out.println(" carnet | user : " + tmpUser.toString());
 		
 		list_carnet_titre = new ArrayList<String>();
 		list_carnet_obj = new ArrayList<CarnetDB>();

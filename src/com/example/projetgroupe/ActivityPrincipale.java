@@ -1,18 +1,23 @@
 package com.example.projetgroupe;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
+import modele.CarnetDB;
 import modele.NavDrawerItem;
+import modele.NoteDB;
 import modele.UserDB;
+import myconnections.DBConnection;
 import adapter.NavDrawerListAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -29,7 +34,6 @@ public class ActivityPrincipale extends Activity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-	
 
 	// nav drawer title
 	private CharSequence mDrawerTitle;
@@ -43,18 +47,15 @@ public class ActivityPrincipale extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+	UserDB utilisateur = null;
+	private Connection con = null;
+	private ActionRefreshData ardDB;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		UserDB tmpUser = (UserDB) getIntent().getSerializableExtra("user");
-		System.out.println(" ok | user : " + tmpUser.toString());
-		tmpUser.setPseudo("fdp");
-		getIntent().putExtra("user", (UserDB)tmpUser);
-		System.out.println(" setname=fdp | user : " + tmpUser.toString());
-		tmpUser = (UserDB) getIntent().getSerializableExtra("user");
-		System.out.println(" GetAfterEdit | user : " + tmpUser.toString());
+		utilisateur = (UserDB) getIntent().getSerializableExtra("user");
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -149,12 +150,16 @@ public class ActivityPrincipale extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
+		case R.id.action_resfresh_data:
+			ardDB = new ActionRefreshData(ActivityPrincipale.this);
+			ardDB.execute();
+			return true;
+		case R.id.action_about_us:
 			AlertDialog.Builder boite;
 			boite = new AlertDialog.Builder(this);
 			boite.setTitle("A propos");
 			boite.setIcon(R.drawable.ic_launcher);
-			boite.setMessage("Developpeur: \n\n Anthony Lattuca: anthony.lattuca@condorcet.be \n\n Alexandre Rosati: alexandre.rosati@condorcet.be");
+			boite.setMessage("Sujet:\n\nBloc-notes avec sauvegarde en ligne des différents articles. Prévoir la notion de catégorie et de titre.\n\nDeveloppeur:\n\n- anthony.lattuca@condorcet.be\n- alexandre.rosati@condorcet.be");
 			boite.setPositiveButton("Ok",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -173,12 +178,12 @@ public class ActivityPrincipale extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		/*
-		// if nav drawer is opened, hide the action items
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
-		*/
+		 * // if nav drawer is opened, hide the action items boolean drawerOpen
+		 * = mDrawerLayout.isDrawerOpen(mDrawerList);
+		 * menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		 */
 		return super.onPrepareOptionsMenu(menu);
-		
+
 	}
 
 	private void displayView(int position) {
@@ -246,4 +251,82 @@ public class ActivityPrincipale extends Activity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
+
+	/*
+	 * =========================================== 
+	 * Ajout d'un carnet dans la DB
+	 * ===========================================
+	 */
+	class ActionRefreshData extends AsyncTask<String, Integer, Boolean> {
+		private String resultat = "";
+		private ProgressDialog pgd = null;
+		private boolean ok = false;
+		ActivityPrincipale act = null;
+        ArrayList<CarnetDB> list = null;
+        ArrayList<NoteDB> list2 = null;
+
+		public ActionRefreshData(ActivityPrincipale activityPrincipale) {
+			act = activityPrincipale;
+			link(activityPrincipale);
+			// TODO Auto-generated constructor stub
+		}
+
+		private void link(ActivityPrincipale activityPrincipale) {
+			// TODO Auto-generated method stub
+
+		}
+
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pgd = new ProgressDialog(ActivityPrincipale.this);
+			pgd.setMessage("chargement en cours");
+			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			pgd.show();
+
+		}
+
+		@Override
+		protected Boolean doInBackground(String... arg0) {
+			if (con == null) {// premier invocation
+				con = new DBConnection().getConnection();
+			}
+			if (con == null) {
+				resultat = "Erreur : vérifier la connexion internet !";
+				return false;
+			}
+			UserDB.setConnection(con);
+			CarnetDB.setConnection(con);
+			NoteDB.setConnection(con);
+                try {
+					list = CarnetDB.getUser(utilisateur.getId_user());
+					utilisateur.setListCarnet(list);
+	                for (CarnetDB obj : utilisateur.getListCarnet()) {
+	                        list2 = NoteDB.getCarnet(obj.getId_carnet());
+	                    obj.setListNote(list2);
+	                }
+	    			resultat = "Synchronisation réussis";
+	                ok = true;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					resultat = "Une erreur inattendu est survenu !";
+				}
+			return ok;
+
+		}
+
+		protected void onPostExecute(Boolean result) {
+			super.onPostExecute(result);
+			pgd.dismiss();
+			if (ok) {
+				System.out.println("User :: "+utilisateur.toString());
+				Toast.makeText(ActivityPrincipale.this, resultat,
+						Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(ActivityPrincipale.this, resultat,
+						Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+
 }
