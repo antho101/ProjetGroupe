@@ -11,6 +11,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,37 +21,42 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MonCompteFragment extends Fragment {
-	private EditText mEditText;
-	Boolean flag = false;
-	Connection con = null;
-	EditText nouveau = null;
-	EditText nouveauCarnet2 = null;
-	int id_user;
-	AlertDialog alert = null;
-	ModifierUserPseudoDB acDB = null;
-	DesinscriptionDB acDD = null;
-
+	private Boolean flag = false;
+	private Connection con = null;
+	private EditText nouveau = null;
+	private EditText nouveauCarnet2 = null;
+	private AlertDialog alert = null;
+	private ModifierUserPseudoDB acDB = null;
+	private DesinscriptionDB acDD = null;
+	private UserDB tmpUser = null;
+	
 	public MonCompteFragment() {
+	}
+	
+	public MonCompteFragment(UserDB tmpUser) {
+		super();
 	}
 
 	private Button btn_mycompte_pseudochange = null,
 			btn_mycompte_mdpasse = null, btn_mycompte_des = null,
 			btn_mycompte_re = null;
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		View rootView = inflater.inflate(R.layout.fragment_moncompte,
 				container, false);
-
+		tmpUser = (UserDB) getActivity().getIntent().getSerializableExtra("user");
+		Log.d("", tmpUser.toString());
 		btn_mycompte_pseudochange = (Button) rootView
 				.findViewById(R.id.btn_mycompte_pseudochange);
 		btn_mycompte_pseudochange
 				.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-
+						flag = false;
 						nouveau = new EditText(getActivity());
 						// Set the default text to a link of the Queen
 						nouveau.setHint("Pseudo");
@@ -91,23 +98,42 @@ public class MonCompteFragment extends Fragment {
 				
 				flag=true;
 				nouveau = new EditText(getActivity());
+				nouveauCarnet2= new EditText(getActivity());
+				
 				// Set the default text to a link of the Queen
-				nouveau.setHint("Pseudo");
+				nouveau.setHint("mot de passe");
+				nouveauCarnet2.setHint("Vérification du mot de passe");
 
 				alert = new AlertDialog.Builder(getActivity())
-						.setTitle("Nouveau pseudo")
-						.setMessage("Veuillez entrer le nouveau pseudo")								
+						.setTitle("Nouveau mot de passe")
+						.setMessage("Veuillez entrer le nouveau mot de passe")								
 						.setView(nouveau)		
-						
 
 						.setPositiveButton("Changer",
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
+										alert = new AlertDialog.Builder(getActivity())
+										.setTitle("Nouveau mot de passe")
+										.setMessage("Veuillez entrer à nouveau le mot de passe")									
+										.setView(nouveauCarnet2)	
 
-										 acDB = new ModifierUserPseudoDB((ActivityPrincipale)
-										 getActivity());
-										 acDB.execute();
+										.setPositiveButton("Changer",
+												new DialogInterface.OnClickListener() {
+													public void onClick(DialogInterface dialog,
+															int whichButton) {
+
+														 acDB = new ModifierUserPseudoDB((ActivityPrincipale)
+														 getActivity());
+														 acDB.execute();
+													}
+												})
+										.setNegativeButton("Annuler",
+												new DialogInterface.OnClickListener() {
+													public void onClick(DialogInterface dialog,
+															int whichButton) {
+													}
+												}).show();
 									}
 								})
 						.setNegativeButton("Annuler",
@@ -125,7 +151,6 @@ public class MonCompteFragment extends Fragment {
 		btn_mycompte_des.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				flag=false;
 				nouveau = new EditText(getActivity());
 
 				alert = new AlertDialog.Builder(getActivity())
@@ -174,6 +199,7 @@ public class MonCompteFragment extends Fragment {
 		private ProgressDialog pgd = null;
 		private boolean ok = false;
 		String varTmp = nouveau.getText().toString();
+		String varTmp2 = nouveauCarnet2.getText().toString();
 		ActivityPrincipale act = null;
 
 		public ModifierUserPseudoDB(ActivityPrincipale activityPrincipale) {
@@ -207,26 +233,44 @@ public class MonCompteFragment extends Fragment {
 			}
 			UserDB.setConnection(con);
 			if (!varTmp.isEmpty()) {
-				String pseudoTmp = null, mdpTmp = null;
-				if (flag == true) {
-					mdpTmp.equals(varTmp);
-					pseudoTmp.equals(Session.getUser().getPseudo());
-				} else {
-					pseudoTmp.equals(varTmp);
-					mdpTmp.equals(Session.getUser().getPassword());
+				
+				if(flag==false){
+					/*tmpUser = new UserDB(tmpUser.getId_user(), varTmp, tmpUser
+							.getMail(),  tmpUser
+							.getPassword());
+					try {
+						tmpUser.update();
+						ok = true;
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+						// TODO Auto-generated catch block
+					}*/
 				}
-				id_user = Session.getUser().getId_user();
-				UserDB u = new UserDB(id_user, pseudoTmp, Session.getUser()
-						.getMail(), mdpTmp);
+				else{
+					if(!varTmp2.isEmpty()){
+						//Log.d("", " var 1 :"+varTmp + "var 2: "+varTmp2);
+						//SystemClock.sleep(7000);
 
-				try {
-					u.update();
-					ok = true;
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-					// TODO Auto-generated catch block
-				}
-
+						if(varTmp.equals(varTmp2)){
+							/*tmpUser = new UserDB(tmpUser.getId_user(), tmpUser.getPseudo(), tmpUser.getMail(),  varTmp);
+							try {
+								tmpUser.update();
+								ok = true;
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
+								// TODO Auto-generated catch block
+							}
+							resultat = "Mot de passe ok :  !"+varTmp;*/
+						}
+						else{
+							resultat = "Mot de passe différents !";
+						}
+					}
+					else{
+						resultat = "Champ vide !";
+					}
+					
+				}		
 			} else {
 				resultat = "Champ vide !";
 			}
@@ -238,11 +282,18 @@ public class MonCompteFragment extends Fragment {
 		protected void onPostExecute(Boolean result) {
 			super.onPostExecute(result);
 			pgd.dismiss();
-			if (ok) {
+			if (ok && flag==false) {
 				Toast.makeText(getActivity(),
 						"Votre pseudo a bien été changer", Toast.LENGTH_SHORT)
 						.show();
-			} else {
+			} 
+			else if(ok && flag==true){
+				Toast.makeText(getActivity(),
+						"Votre mot de passe a bien été changer", Toast.LENGTH_SHORT)
+						.show();
+			}
+				else {
+			
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
 						.show();
 			}
@@ -286,10 +337,9 @@ public class MonCompteFragment extends Fragment {
 				return false;
 			}
 			UserDB.setConnection(con);
-			id_user = Session.getUser().getId_user();
-			UserDB u = new UserDB(id_user);
+			//UserDB u = new UserDB(tmpUser.getId_user());
 			try {
-				u.delete();
+				//u.delete();
 				ok = true;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
