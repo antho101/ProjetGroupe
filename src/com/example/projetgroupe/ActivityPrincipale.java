@@ -3,7 +3,6 @@ package com.example.projetgroupe;
 import java.util.ArrayList;
 
 import modele.NavDrawerItem;
-import modele.Session;
 import modele.UserDB;
 import adapter.NavDrawerListAdapter;
 import android.app.Activity;
@@ -30,6 +29,7 @@ public class ActivityPrincipale extends Activity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
+	
 
 	// nav drawer title
 	private CharSequence mDrawerTitle;

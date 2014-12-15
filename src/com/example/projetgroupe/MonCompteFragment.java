@@ -198,8 +198,8 @@ public class MonCompteFragment extends Fragment {
 		private String resultat = "";
 		private ProgressDialog pgd = null;
 		private boolean ok = false;
-		String varTmp = nouveau.getText().toString();
-		String varTmp2 = nouveauCarnet2.getText().toString();
+		String varTmp = nouveau.getText().toString();//récupère le mot de passe ou le pseudo
+		String varTmp2 = nouveauCarnet2.getText().toString();// récupère la vérification du mot de passe
 		ActivityPrincipale act = null;
 
 		public ModifierUserPseudoDB(ActivityPrincipale activityPrincipale) {
@@ -232,19 +232,21 @@ public class MonCompteFragment extends Fragment {
 				return false;
 			}
 			UserDB.setConnection(con);
+			Log.d("", tmpUser.getPseudo());
 			if (!varTmp.isEmpty()) {
-				
+				Log.d("", tmpUser.getPseudo());
 				if(flag==false){
-					/*tmpUser = new UserDB(tmpUser.getId_user(), varTmp, tmpUser
-							.getMail(),  tmpUser
-							.getPassword());
+					tmpUser.setPseudo(varTmp);
+					Log.d("", tmpUser.getPseudo());
 					try {
 						tmpUser.update();
+						//getActivity().getIntent().putExtra("user", (UserDB)tmpUser);
 						ok = true;
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 						// TODO Auto-generated catch block
-					}*/
+					}
+					
 				}
 				else{
 					if(!varTmp2.isEmpty()){
@@ -252,15 +254,15 @@ public class MonCompteFragment extends Fragment {
 						//SystemClock.sleep(7000);
 
 						if(varTmp.equals(varTmp2)){
-							/*tmpUser = new UserDB(tmpUser.getId_user(), tmpUser.getPseudo(), tmpUser.getMail(),  varTmp);
+							tmpUser.setPassword(varTmp);
 							try {
 								tmpUser.update();
+								getActivity().getIntent().putExtra("user", (UserDB)tmpUser);
 								ok = true;
 							} catch (Exception e) {
 								System.out.println(e.getMessage());
 								// TODO Auto-generated catch block
 							}
-							resultat = "Mot de passe ok :  !"+varTmp;*/
 						}
 						else{
 							resultat = "Mot de passe différents !";
@@ -337,9 +339,10 @@ public class MonCompteFragment extends Fragment {
 				return false;
 			}
 			UserDB.setConnection(con);
+			tmpUser.getId_user();
 			//UserDB u = new UserDB(tmpUser.getId_user());
 			try {
-				//u.delete();
+				tmpUser.delete();
 				ok = true;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
