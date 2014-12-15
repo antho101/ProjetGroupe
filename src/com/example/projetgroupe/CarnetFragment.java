@@ -316,7 +316,6 @@ public class CarnetFragment extends Fragment  {
 					}
 				}
 				
-				
 				adapter.notifyDataSetChanged();
 
 				
@@ -335,6 +334,27 @@ public class CarnetFragment extends Fragment  {
 	 * Refresh
 	 * ===========================================
 	 */
+	protected void refreshData(){
+		list_carnet_titre.clear();
+		UserDB o =  (UserDB) getActivity().getIntent().getSerializableExtra("user");
+		list_carnet_obj = o.getListCarnet();
 
+		if (list_carnet_obj.size() < 5) {
+			list_carnet_titre.add("+ Ajouter un carnet ["
+					+ list_carnet_obj.size() + "/5]");
+		}
+		for (int i = 0; i < 5; i++) {
+			if (i < list_carnet_obj.size()) {
+				list_carnet_titre.add(list_carnet_obj.get(i).getTitre());
+			}
+		}
+		
+		adapter.notifyDataSetChanged();
+
+		
+		Toast.makeText(getActivity(),
+				"Mise a jour",
+				Toast.LENGTH_SHORT).show();
+	}
 
 }
