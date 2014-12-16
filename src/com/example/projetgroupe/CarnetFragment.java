@@ -143,17 +143,13 @@ public class CarnetFragment extends Fragment  {
 					}
 				});
 		//chaque fois qu'on va sur le fragment on refresh
-		glcDB = new GetListCarnetDB(
-				(ActivityPrincipale) getActivity());
-		glcDB.execute();
+		refreshData();
 		return rootView;
 	}
 
 	protected void handleShakeEvent(int count) {
 		// TODO Auto-generated method stub
-		glcDB = new GetListCarnetDB(
-				(ActivityPrincipale) getActivity());
-		glcDB.execute();
+		refreshData();
 		
 	}
 	@Override
