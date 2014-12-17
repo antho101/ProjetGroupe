@@ -380,10 +380,8 @@ public class MonCompteFragment extends Fragment {
 				return false;
 			}
 			UserDB.setConnection(con);
-			tmpUser.getId_user();
 			try {
-				//tmpUser.delete();
-				//getActivity().getIntent().putExtra("user", tmpUser);
+				tmpUser.delete();
 				ok = true;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -397,7 +395,7 @@ public class MonCompteFragment extends Fragment {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				
+				getActivity().finish();
 				Toast.makeText(getActivity(), "Desinscription effectué",
 						Toast.LENGTH_SHORT).show();
 			} else {
