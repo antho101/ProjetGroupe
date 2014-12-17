@@ -37,14 +37,5 @@
 	    android:background="#019875"
 	    android:text="@string/btn_mycompte_desinscription"
 	    android:textColor="#fff" />
-    <Button
-	    android:id="@+id/btn_mycompte_re"
-	    android:layout_width="200dip"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:layout_marginTop="25dip"
-	    android:background="#019875"
-	    android:text="@string/btn_mycompte_return"
-	    android:textColor="#fff" />
 
 </LinearLayout>

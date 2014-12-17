@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#333f4f" >
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_register"
+        android:layout_alignBottom="@+id/btn_register"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="48dp"
+        android:background="#019875"
+        android:text="@string/button_connexion"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:ems="10"
+        android:hint="@string/label_mail"
+        android:inputType="textEmailAddress"
+        android:textColor="#fff"
+        android:textColorHint="#fff" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/mail"
+        android:ems="10"
+        android:hint="@string/label_password"
+        android:inputType="textPassword"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/password"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="40dp"
+        android:background="#019875"
+        android:text="@string/btn_register_submit_connection"
+        android:textColor="#fff" />
+
+</RelativeLayout>

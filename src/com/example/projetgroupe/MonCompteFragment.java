@@ -2,10 +2,6 @@ package com.example.projetgroupe;
 
 import java.sql.Connection;
 
-import com.example.projetgroupe.CarnetFragment.GetListCarnetDB;
-
-import modele.CarnetDB;
-import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.AlertDialog;
@@ -14,7 +10,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -186,14 +181,7 @@ public class MonCompteFragment extends Fragment {
 
 			}
 		});
-		btn_mycompte_re = (Button) rootView.findViewById(R.id.btn_mycompte_re);
-		btn_mycompte_re.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				getActivity().getFragmentManager().popBackStack();
 
-			}
-		});
 
 		return rootView;
 

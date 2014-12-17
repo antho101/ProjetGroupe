@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BlockNote</string>
+    <string name="hello_world">Nouvelle fenetre :D !</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh_data">Update</string>
+    <string name="action_about_us">About us</string>
+    <!-- ================== login - register ================== -->
+    <string name="label_mail">Mail</string>
+    <string name="label_password">Passowrd</string>
+    <string name="button_connexion">• Sign in</string>
+    <string name="label_retype">re-type</string>
+    <string name="button_register">Register</string>
+    <string name="label_pseudo">Login</string>
+    <string name="btn_register_submit">• Register</string>
+	<string name="btn_register_back">• Back</string>
+	<string name="btn_register_submit_connection">• Register</string>
+    
+	
+    <!-- ================== mon compte ================== -->
+	<string name="btn_mycompte_pseud">• Edit Login</string>
+	<string name="btn_mycompte_mdp">• Edit password</string>
+	<string name="btn_mycompte_desinscription">• Unregister</string>
+	<string name="btn_mycompte_return">• Back</string>
+	
+    <!-- ================== Autres ================== -->
+    
+    <string name="title_activity_accueil">Home</string>
+    <string name="title_activity_inscription">Register</string>
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Book</string>
+    <string name="title_section3">My account</string>
+    <string name="title_section4">Log out</string>
+    
+    
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Book</item>
+        <item >My account</item>
+        <item >Log out</item>
+    </string-array>
+     
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/icon_accueil</item>
+        <item>@drawable/icon_carnet</item>
+        <item>@drawable/icon_moncompte</item>
+        <item>@drawable/icon_deconnexion</item>
+    </array>
+     
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+</resources>
