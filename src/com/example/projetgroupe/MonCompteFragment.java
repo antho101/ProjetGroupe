@@ -30,6 +30,7 @@ public class MonCompteFragment extends Fragment {
 	private EditText nouveauCarnet2 = null;
 	private AlertDialog alert = null;
 	private EditPseudoDB epDB = null;
+	private EditMdpDB epDM = null;
 	private DesinscriptionDB acDD = null;
 	private UserDB tmpUser = null;
 
@@ -128,18 +129,11 @@ public class MonCompteFragment extends Fragment {
 															public void onClick(
 																	DialogInterface dialog,
 																	int whichButton) {
-
-																/*
-																 * acDB = new
-																 * ModifierUserPseudoDB
-																 * ((
-																 * ActivityPrincipale
-																 * )
-																 * getActivity(
-																 * ));
-																 * acDB.execute
-																 * ();
-																 */
+																Log.d("", "je suis avant l'execution");
+																epDM = new EditMdpDB(
+																		(ActivityPrincipale) getActivity());
+																Log.d("", "epDb: "+epDM);
+																epDM.execute();
 															}
 														})
 												.setNegativeButton(
@@ -176,10 +170,10 @@ public class MonCompteFragment extends Fragment {
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
-										// acDD = new
-										// DesinscriptionDB((ActivityPrincipale)
-										// getActivity());
-										// acDB.execute();
+										acDD = new
+										DesinscriptionDB((ActivityPrincipale)
+										getActivity());
+										acDD.execute();
 
 									}
 								})
@@ -268,6 +262,85 @@ public class MonCompteFragment extends Fragment {
 			}
 		}
 	}
+	
+	
+	/*
+	 * Mettre a jour le mot de passe
+	 */
+
+	class EditMdpDB extends AsyncTask<String, Integer, Boolean> {
+		private String resultat = "";
+		private ProgressDialog pgd = null;
+		private boolean ok = false;
+		ActivityPrincipale act = null;
+		String varTmp = nouveau.getText().toString();
+		String varTmp2 = nouveauCarnet2.getText().toString();
+		
+		public EditMdpDB(ActivityPrincipale activityPrincipale) {
+			act = activityPrincipale;
+			link(activityPrincipale);
+			// TODO Auto-generated constructor stub
+		}
+
+		private void link(ActivityPrincipale activityPrincipale) {
+			// TODO Auto-generated method stub
+		}
+
+		protected void onPreExecute() {
+			super.onPreExecute();
+			Log.d("", "je suis avant le chargement");
+			pgd = new ProgressDialog(getActivity());
+			pgd.setMessage("chargement en cours");
+			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			pgd.show();
+		}
+
+		@Override
+		protected Boolean doInBackground(String... arg0) {
+			if (con == null) {// premier invocation
+				con = new DBConnection().getConnection();
+			}
+			if (con == null) {
+				resultat = "Erreur : vérifier la connexion internet !";
+				return false;
+			}
+			UserDB.setConnection(con);
+			if(!varTmp.isEmpty()){
+				if(!varTmp2.isEmpty()){
+					if(varTmp.equals(varTmp2)){
+						tmpUser.setPassword(varTmp);
+						try {
+							tmpUser.update();
+							ok = true;
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}else{
+						resultat = "Mot de passe incohérent";
+					}
+					
+				}else{
+					resultat = "vous n'avez écrit aucun mot de passe";
+				}
+				
+			}else{
+				resultat = "vous n'avez écrit aucun mot de passe";
+			}
+			return ok;
+		}
+
+		protected void onPostExecute(Boolean result) {
+			super.onPostExecute(result);
+			pgd.dismiss();
+			if (ok) {
+				Toast.makeText(getActivity(), "Changement effectué.", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
+						.show();
+			}
+		}
+	}
 
 	/* ==================< Tache pour la désinscription>=============== */
 	class DesinscriptionDB extends AsyncTask<String, Integer, Boolean> {
@@ -308,10 +381,9 @@ public class MonCompteFragment extends Fragment {
 			}
 			UserDB.setConnection(con);
 			tmpUser.getId_user();
-			// UserDB u = new UserDB(tmpUser.getId_user());
 			try {
-				tmpUser.delete();
-				getActivity().getIntent().putExtra("user", tmpUser);
+				//tmpUser.delete();
+				//getActivity().getIntent().putExtra("user", tmpUser);
 				ok = true;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
