@@ -9,8 +9,11 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
-	
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -21,6 +24,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,5 +36,26 @@
             android:name=".ActivityInscription"
             android:label="@string/title_activity_inscription" >
         </activity>
+        <activity
+            android:name=".NoteDetail"
+            android:label="@string/title_activity_note_detail" >
+        </activity>
+        <activity
+            android:name=".ActivityNote"
+            android:label="@string/title_activity_activity_note" >
+        </activity>
+        <activity
+            android:name=".EcrireNote"
+            android:label="@string/title_activity_ecrire_note" >
+        </activity>
+        <activity
+            android:name=".ActivityNoteListe"
+            android:label="@string/title_activity_activity_note_liste" >
+        </activity>
+        <activity
+            android:name=".LinedEditText"
+            android:label="@string/title_activity_lined_edit_text" >
+        </activity>
     </application>
+
 </manifest>

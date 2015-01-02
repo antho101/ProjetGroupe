@@ -1,6 +1,8 @@
 package modele;
 
-public class Session {
+import java.io.Serializable;
+
+public class Session  implements Serializable{
 
 	protected static UserDB user;
 

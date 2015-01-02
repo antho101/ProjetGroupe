@@ -1,6 +1,8 @@
 package modele;
 
-public class Categorie {
+import java.io.Serializable;
+
+public class Categorie  implements Serializable{
 
     protected int id_categorie = -1;
     protected String label;

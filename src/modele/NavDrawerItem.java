@@ -1,6 +1,8 @@
 package modele;
 
-public class NavDrawerItem {
+import java.io.Serializable;
+
+public class NavDrawerItem  implements Serializable{
 
 	private String title;
 	private int icon;

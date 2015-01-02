@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Carnet {
+class Carnet implements Serializable{
 
     protected int id_carnet;
     protected String titre;

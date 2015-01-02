@@ -235,7 +235,11 @@ public class MonCompteFragment extends Fragment {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}else{
+				resultat = "Erreur : pseudo vide !";
+
 			}
+			
 			return ok;
 		}
 

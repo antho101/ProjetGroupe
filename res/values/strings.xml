@@ -6,6 +6,7 @@
     <string name="action_settings">Configuration</string>
     <string name="action_refresh_data">Mise a jour</string>
     <string name="action_about_us">A Propos</string>
+    <string name="corbeille">Corbeille</string>
     <!-- ================== login - register ================== -->
     <string name="label_mail">Mail</string>
     <string name="label_password">Mot de passe</string>
@@ -14,34 +15,46 @@
     <string name="button_register">Inscription</string>
     <string name="label_pseudo">pseudo</string>
     <string name="btn_register_submit">• Inscription</string>
-	<string name="btn_register_back">• Retour</string>
-	<string name="btn_register_submit_connection">• Inscription</string>
-    
-	
+    <string name="btn_register_back">• Retour</string>
+    <string name="btn_register_submit_connection">• Inscription</string>
+
+    <!-- ================== note detail ================== -->
+    <string name="label_Titre">Titre</string>
+    <string name="Date">Date</string>
+    <string name="btn_delete_note">Supprimer</string>
+    <string name="btn_back">Retour</string>
+    <string name="btn_modif_note">Modifier</string>
+    <string name="important">importance</string>
+
     <!-- ================== mon compte ================== -->
-	<string name="btn_mycompte_pseud">• Changer de pseudo</string>
-	<string name="btn_mycompte_mdp">• Changer votre mot de passe</string>
-	<string name="btn_mycompte_desinscription">• Desinscription</string>
-	<string name="btn_mycompte_return">• Retour</string>
-	
+    <string name="btn_mycompte_pseud">• Changer de pseudo</string>
+    <string name="btn_mycompte_mdp">• Changer votre mot de passe</string>
+    <string name="btn_mycompte_desinscription">• Desinscription</string>
+    <string name="btn_mycompte_return">• Retour</string>
+
     <!-- ================== Autres ================== -->
-    
+
     <string name="title_activity_accueil">Accueil</string>
     <string name="title_activity_inscription">Inscription</string>
     <string name="title_section1">Accueil</string>
     <string name="title_section2">Carnet</string>
     <string name="title_section3">Mon compte</string>
     <string name="title_section4">Deconnexion</string>
-    
-    
+
+    <!-- ================== ecrire note ================== -->
+    <string name="button_note">Ecrire</string>
+    <string name="titre_note">Titre</string>
+    <string name="radioButton1">Important ?</string>
+    <string name="contenu_note">Contenu</string>
+
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Accueil</item>
-        <item >Carnet</item>
-        <item >Mon compte</item>
-        <item >Deconnexion</item>
+        <item>Accueil</item>
+        <item>Carnet</item>
+        <item>Mon compte</item>
+        <item>Deconnexion</item>
     </string-array>
-     
+
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
@@ -50,8 +63,26 @@
         <item>@drawable/icon_moncompte</item>
         <item>@drawable/icon_deconnexion</item>
     </array>
-     
+
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="country_prompt">Choose a country</string>
+
+    <string-array name="country_arrays">
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+    <string name="title_activity_note_detail">NoteDetail</string>
+    <string name="title_activity_activity_note">ActivityNote</string>
+    <string name="title_activity_ecrire_note">EcrireNote</string>
+    <string name="title_activity_activity_note_liste">ActivityNoteListe</string>
+    <string name="title_activity_lined_edit_text">LinedEditText</string>
 
 </resources>

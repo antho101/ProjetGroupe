@@ -328,5 +328,9 @@ public class ActivityPrincipale extends Activity {
 			}
 		}
 	}
+	@Override
+	public void onBackPressed() {
+	    // Do Here what ever you want do on back press;
+	}
 
 }

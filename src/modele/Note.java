@@ -1,7 +1,8 @@
 package modele;
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Note {
+public class Note  implements Serializable{
 
     protected int id_note;
     protected String titre;

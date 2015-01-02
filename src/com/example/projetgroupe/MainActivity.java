@@ -1,7 +1,10 @@
 package com.example.projetgroupe;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import modele.CarnetDB;
+import modele.NoteDB;
 import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
@@ -22,7 +25,8 @@ public class MainActivity extends Activity {
 	private EditText log, mdp;
 	private String logTmp, mdpTmp;
 	UserDB u = null;
-	
+	ArrayList<CarnetDB> list =null;
+	ArrayList<NoteDB> list2 =null;
 	public final static int CHOOSE_BUTTON_REQUEST = 0;
 
 
@@ -85,20 +89,29 @@ public class MainActivity extends Activity {
 				}
 
 				UserDB.setConnection(con);
+				CarnetDB.setConnection(con);
+				NoteDB.setConnection(con);
 			}
 			log = (EditText) findViewById(R.id.mail);
 			mdp = (EditText) findViewById(R.id.password);
 			logTmp = log.getText().toString();
 			mdpTmp = mdp.getText().toString();
 			// ligne pour éviter de tapper h24 les logins quand on try le projet
-			 logTmp = "alex7170@gmail.com";
-			 mdpTmp = "azerty";
+			 logTmp = "anthony.lattuca@condorcet.be";
+			 mdpTmp = "anthony";
 			if (!logTmp.isEmpty()) {
 				if (!mdpTmp.isEmpty()) {
 					try {
 						u = new UserDB(logTmp, mdpTmp);
 						if (u.checkLogin()) {
 							ok = true;
+							list = CarnetDB.getUser(u.getId_user());
+                            u.setListCarnet(list);
+                            for (CarnetDB obj : u.getListCarnet()) {
+                                list2 = NoteDB
+                                        .getCarnet(obj.getId_carnet());
+                                obj.setListNote(list2);
+                            }
 						} else {
 							resultat = "Login & Mot de passe incorrecte !";
 						}
@@ -128,7 +141,7 @@ public class MainActivity extends Activity {
 				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this,
 						ActivityPrincipale.class);
-				accueilIndent.putExtra("user", (UserDB)u);
+				accueilIndent.putExtra("user", (UserDB)u);		
 				startActivity(accueilIndent);
 			} else {
 				Toast.makeText(getApplicationContext(), resultat, Toast.LENGTH_SHORT).show();

@@ -10,7 +10,7 @@ public class User implements Serializable  {
     protected String mail;
     protected String password;
     protected ArrayList<CarnetDB> listCarnet;
-
+    
     public User(int id_user) {
         this.id_user = id_user;
         this.pseudo = "";
@@ -58,7 +58,7 @@ public class User implements Serializable  {
     public String getPassword() {
         return password;
     }
-
+    
     public ArrayList<CarnetDB> getListCarnet() {
         return listCarnet;
     }
@@ -87,6 +87,16 @@ public class User implements Serializable  {
         listCarnet.add(obj);
     }
 
+    public ArrayList<NoteDB> getFullNote(){
+    	ArrayList<NoteDB> fullNote = new ArrayList<NoteDB>();
+    	for(CarnetDB co : listCarnet){
+    		for(NoteDB no : co.getListNote()){
+    			fullNote.add(no);
+    		}
+    	}
+    	return fullNote;
+    }
+    
     @Override
     public String toString() {
         return "User{" + "id_user=" + id_user + ", pseudo=" + pseudo + ", mail=" + mail + ", password=" + password + ", listCarnet=" + listCarnet + '}';

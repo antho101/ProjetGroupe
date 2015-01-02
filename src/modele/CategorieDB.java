@@ -5,6 +5,7 @@
  */
 package modele;
 
+import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.sql.ResultSet;
  *
  * @author Anthony
  */
-public class CategorieDB extends Categorie implements CRUD {
+public class CategorieDB extends Categorie implements CRUD, Serializable{
 
     protected static Connection dbConnect = null;
 

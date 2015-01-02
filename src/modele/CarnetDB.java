@@ -5,6 +5,7 @@
  */
 package modele;
 
+import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author Alexandre
  */
-public class CarnetDB extends Carnet implements CRUD {
+public class CarnetDB extends Carnet implements CRUD, Serializable {
 
     protected static Connection dbConnect = null;
 

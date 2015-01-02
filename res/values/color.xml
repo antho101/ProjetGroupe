@@ -8,4 +8,6 @@
     <color name="counter_text_color">#c5c4c4</color>
     <color name="color_primary">#333f4f</color>
     <color name="color_white">#ffffff</color>
+    <color name="color_black">#000</color>
+    <color name="dark_blue">#E1E1E1</color>
 </resources>
