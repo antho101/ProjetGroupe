@@ -159,8 +159,8 @@ public class ActivityPrincipale extends Activity {
 			boite = new AlertDialog.Builder(this);
 			boite.setTitle("A propos");
 			boite.setIcon(R.drawable.ic_launcher);
-			boite.setMessage("Sujet:\n\nBloc-notes avec sauvegarde en ligne des différents articles. Prévoir la notion de catégorie et de titre.\n\nDeveloppeur:\n\n- anthony.lattuca@condorcet.be\n- alexandre.rosati@condorcet.be");
-			boite.setPositiveButton("Ok",
+			boite.setMessage(getResources().getString(R.string.apropos));
+			boite.setPositiveButton(getResources().getString(R.string.ok),
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 						}
@@ -217,11 +217,11 @@ public class ActivityPrincipale extends Activity {
 		} else {
 			if (logout) {
 				Toast.makeText(getApplicationContext(),
-						"Déconnexion réussis !", Toast.LENGTH_SHORT).show();
+						getResources().getString(R.string.logout), Toast.LENGTH_SHORT).show();
 				logout = false;
 			} else {
 				Toast.makeText(getApplicationContext(),
-						"Une erreur inattendue est survenue !",
+						getResources().getString(R.string.erreurAP),
 						Toast.LENGTH_SHORT).show();
 			}
 		}
@@ -279,7 +279,7 @@ public class ActivityPrincipale extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(ActivityPrincipale.this);
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -291,7 +291,7 @@ public class ActivityPrincipale extends Activity {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);;
 				return false;
 			}
 			UserDB.setConnection(con);
@@ -304,12 +304,12 @@ public class ActivityPrincipale extends Activity {
 	                        list2 = NoteDB.getCarnet(obj.getId_carnet());
 	                    obj.setListNote(list2);
 	                }
-	    			resultat = "Synchronisation réussis";
+	    			resultat = getResources().getString(R.string.synchro);
 	                ok = true;
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					resultat = "Une erreur inattendu est survenu !";
+					resultat = getResources().getString(R.string.erreurAP);
 				}
 			return ok;
 
@@ -319,7 +319,6 @@ public class ActivityPrincipale extends Activity {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				System.out.println("User :: "+utilisateur.toString());
 				Toast.makeText(ActivityPrincipale.this, resultat,
 						Toast.LENGTH_SHORT).show();
 			} else {

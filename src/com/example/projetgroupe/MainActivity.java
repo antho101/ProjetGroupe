@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import modele.CarnetDB;
 import modele.NoteDB;
-import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.Activity;
@@ -46,7 +45,6 @@ public class MainActivity extends Activity {
 		button2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("Inscription");
 				Intent inscriptionIndent = new Intent(MainActivity.this,
 						ActivityInscription.class);
 				startActivity(inscriptionIndent);
@@ -73,7 +71,7 @@ public class MainActivity extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(MainActivity.this);
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -84,7 +82,7 @@ public class MainActivity extends Activity {
 			if (con == null) {// premier invocation
 				con = new DBConnection().getConnection();
 				if (con == null) {
-					resultat = "Erreur : vérifier la connexion internet !";
+					resultat = getResources().getString(R.string.checkie);
 					return false;
 				}
 
@@ -113,7 +111,7 @@ public class MainActivity extends Activity {
                                 obj.setListNote(list2);
                             }
 						} else {
-							resultat = "Login & Mot de passe incorrecte !";
+							resultat = getResources().getString(R.string.LMinco);
 						}
 
 					} catch (Exception e) {
@@ -123,11 +121,11 @@ public class MainActivity extends Activity {
 
 				} else {
 					ok = false;
-					resultat = "Veuillez entrez votre mot de passe.";
+					resultat = getResources().getString(R.string.Minco);
 				}
 			} else {
 				ok = false;
-				resultat = "Veuillez entre votre email.";
+				resultat = getResources().getString(R.string.Linco);
 			}
 			return ok;
 		}
@@ -138,7 +136,6 @@ public class MainActivity extends Activity {
 			pgd.dismiss();
 			if (ok) {
 				pgd.dismiss();
-				System.out.println("Démmarage de l'appz");
 				Intent accueilIndent = new Intent(MainActivity.this,
 						ActivityPrincipale.class);
 				accueilIndent.putExtra("user", (UserDB)u);		

@@ -53,5 +53,85 @@
      
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-
+	<!-- Accueil Fragment -->
+    <string name="checkie">Errore: controllare la connessione a Internet</string>
+    <string name="load">Carica </string>
+    <string name="maj">Aggiornamento eseguito</string>
+    <string name="maj2">Aggiorna </string>
+    
+    <!-- Activity Inscription -->
+    <string name="ins"> abbonati attuali </string>
+    <string name="entreMDP">nserisci una password.</string>
+    <string name="entreemail">Si prega di inserire un indirizzo email valido.</string>
+    <string name="entreemai">Inserisci il tuo indirizzo email.</string>
+    <string name="entrepseu">Inserisci il tuo nickname</string>
+    <string name="successins">successins avvenuta registrazione, effettua il login! </string>
+    
+    <!-- ActivityNoteListe -->
+    <string name="Note_Delete">Elimina </string>
+    <string name="Note_title">Cambia titolo </string>
+    <string name="ChangeCon">Cambia contenuto </string>
+    <string name="ChangeTiNo">Modificare il titolo della nota</string>
+    <string name="ChangeANL">Cambia </string>
+     <string name="ChangeANUL">Annulla </string>
+    <string name="ChangeCN">Modifica il contenuto della nota</string>
+     <string name="AddNote">+ Aggiungi nota</string>
+     <string name="DeleteSu">Soppressione eseguita</string>
+     
+     <!-- ActivityNote -->
+     <string name="AddCarnet">+ Aggiungere [</string>
+     
+     <!-- ActivityPrincipale -->
+     <string name="apropos">Oggetto: pad \ n \ NBLOC con backup online per gli articoli differenti. Fornire per la categoria concept ed il titolo \ n \ nDeveloppeur. \ N \ n anthony.lattuca@condorcet.be \ n alexandre.rosati@condorcet.be</string>
+     <string name="ok">OK</string>
+     <string name="logout"> Disconnetti successo! </string>
+     <string name="erreurAP">Si è verificato un errore imprevisto!</string>
+     <string name="synchro">Sincronizzazione successo</string>
+     
+     <!-- CarnetFragment -->
+     <string name="NomC">Prenota Nome </string>
+     <string name="Carnet">Notebook : </string>
+     <string name="NewCarn">Inserisci il nuovo nome del libro:</string>
+     <string name="AddC">Aggiungi </string>
+     <string name="ChangeTC">Modificare il titolo</string>
+     <string name="actionC">Azione : </string>
+     <string name="Changetdc">Modificare il titolo </string>
+     <string name="ChampsV">Campo vuoto! </string>
+     <string name="DeleteOk">Soppressione eseguita</string>
+     <string name="carnetMaj">Il libro è stato aggiornato </string>
+     
+     
+     <!-- EcrireNote -->
+     <string name="insertN">successo inserimento della nota</string>
+     <string name="Prob">Problema </string>
+     <string name="insertT">Inserisci un titolo</string>
+     <string name="insertC">Si prega di inserire una </string>
+     
+     <!-- MainActivity -->
+     <string name="LMinco">Login e Password errata! </string>
+     <string name="Minco">Si prega di inserire la password. </string>
+     <string name="Linco"> Inserisci il tuo indirizzo email.</string>
+     
+     <!-- MonCompteFragment -->
+     <string name="pseudo">Alias </string>
+     <string name="Npseudo">New Nickname</string>
+     <string name="VNpseudo">Si prega di inserire il nuovo nome utente</string>
+     <string name="mdp">Password </string>
+     <string name="Nmdp">Nuova password</string>
+     <string name="Vmdp">password di verifica </string>
+     <string name="VNmdp">Si prega di inserire la nuova password</string>
+     <string name="VANmdp">Si prega di inserire nuovamente la password</string>
+     <string name="desin">Per annullare l iscrizione</string>
+     <string name="desinV">Vuoi davvero annullare l iscrizione?</string>
+     <string name="yes">si</string>
+     <string name="no">No</string>
+     <string name="pseudoV">Errore: nome utente vuoto !</string>
+     <string name="mdpI">incoerente password</string>
+     <string name="mdpN">n hai scritto una password</string>
+     <string name="DE">Unsubscribe done</string>
+     
+     <!-- NoteDetail -->
+     <string name="contenu">Content </string>
+     <string name="Ccontenu">Modifica il contenuto della nota</string>
+     <string name="NoteS"> rating soppresso</string>
 </resources>

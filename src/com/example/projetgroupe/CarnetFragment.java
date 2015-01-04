@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import modele.CarnetDB;
 import modele.NoteDB;
-import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.AlertDialog;
@@ -89,7 +88,6 @@ public class CarnetFragment extends Fragment {
 
 		UserDB tmpUser = (UserDB) getActivity().getIntent()
 				.getSerializableExtra("user");
-		System.out.println(" carnet | user : " + tmpUser.toString());
 
 		list_carnet_titre = new ArrayList<String>();
 		list_carnet_obj = new ArrayList<CarnetDB>();
@@ -119,33 +117,26 @@ public class CarnetFragment extends Fragment {
 					public void onItemClick(AdapterView<?> adapterView,
 							View view, int i, long l) {
 						pos = i;
-						System.out.println("i " + i);
 						if (i == 0 && list_carnet_obj.size() < 5) {
-							System.out.println("Ajout d'un carnet");
 
 							final EditText nouveauCarnet = new EditText(
 									getActivity());
 							// Set the default text to a
 							// link of the Queen
-							nouveauCarnet.setHint("Nom du carnet");
+							nouveauCarnet.setHint(getResources().getString(R.string.NomC));
 
 							alert = new AlertDialog.Builder(getActivity())
-									.setTitle("Carnet : ")
+									.setTitle(getResources().getString(R.string.Carnet))
 									.setMessage(
-											"Veuillez entrer le nouveau nom du carnet :")
+											getResources().getString(R.string.NewCarn))
 									.setView(nouveauCarnet)
 									.setPositiveButton(
-											"Créer",
+											getResources().getString(R.string.AddC),
 											new DialogInterface.OnClickListener() {
 												public void onClick(
 														DialogInterface dialog,
 														int whichButton) {
 
-													Log.d("",
-															"alert création de carnet : "
-																	+ nouveauCarnet
-																			.getText()
-																			.toString());
 													acDB = new AjoutCarnetDB(
 															(ActivityPrincipale) getActivity(),
 
@@ -156,7 +147,7 @@ public class CarnetFragment extends Fragment {
 												}
 											})
 									.setNegativeButton(
-											"Annuler",
+											getResources().getString(R.string.ChangeANUL),
 											new DialogInterface.OnClickListener() {
 												public void onClick(
 														DialogInterface dialog,
@@ -181,14 +172,14 @@ public class CarnetFragment extends Fragment {
 									AdapterView parent, View view,
 									final int position, long id) {
 								final CharSequence[] items = {
-										"Delete", "Change title" };
+										getResources().getString(R.string.Note_Delete), getResources().getString(R.string.ChangeTC) };
 								pos= position;
 								ModifTitre = new EditText(
 										getActivity());
 								final AlertDialog.Builder builder = new AlertDialog.Builder(
 										getActivity());
 
-								builder.setTitle("Action:");
+								builder.setTitle(getResources().getString(R.string.actionC));
 								builder.setItems(
 										items,
 										new DialogInterface.OnClickListener() {
@@ -208,21 +199,16 @@ public class CarnetFragment extends Fragment {
 													change = new AlertDialog.Builder(
 															getActivity())
 															.setTitle(
-																	"Changer le titre du carnet")
+																	getResources().getString(R.string.Changetdc))
 															.setView(
 																	ModifTitre)
 
 															.setPositiveButton(
-																	"Changer",
+																	getResources().getString(R.string.ChangeANL),
 																	new DialogInterface.OnClickListener() {
 																		public void onClick(
 																				DialogInterface dialog,
 																				int whichButton) {
-
-																			Log.d("",
-																					" modif ="
-																							+ ModifTitre
-																									.getText());
 
 																			epDM = new EditDB(
 																					(ActivityPrincipale) getActivity(),
@@ -236,7 +222,7 @@ public class CarnetFragment extends Fragment {
 																		}
 																	})
 															.setNegativeButton(
-																	"Annuler",
+																	getResources().getString(R.string.ChangeANUL),
 																	new DialogInterface.OnClickListener() {
 																		public void onClick(
 																				DialogInterface dialog,
@@ -315,7 +301,7 @@ public class CarnetFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -327,7 +313,7 @@ public class CarnetFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			CarnetDB.setConnection(con);
@@ -344,7 +330,7 @@ public class CarnetFragment extends Fragment {
 				}
 
 			} else {
-				resultat = "Champ vide !";
+				resultat = getResources().getString(R.string.ChampsV);
 			}
 
 			return ok;
@@ -388,7 +374,7 @@ public class CarnetFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -400,7 +386,7 @@ public class CarnetFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			CarnetDB.setConnection(con);
@@ -428,7 +414,7 @@ public class CarnetFragment extends Fragment {
 				list_carnet_obj = list_carnet;
 
 				if (list_carnet_obj.size() < 5) {
-					list_carnet_titre.add("+ Ajouter un carnet ["
+					list_carnet_titre.add(getResources().getString(R.string.AddCarnet)
 							+ list_carnet_obj.size() + "/5]");
 				}
 				for (int i = 0; i < 5; i++) {
@@ -440,7 +426,7 @@ public class CarnetFragment extends Fragment {
 
 				adapter.notifyDataSetChanged();
 
-				Toast.makeText(getActivity(), "Mise a jour", Toast.LENGTH_SHORT)
+				Toast.makeText(getActivity(), getResources().getString(R.string.maj2), Toast.LENGTH_SHORT)
 						.show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
@@ -461,7 +447,7 @@ public class CarnetFragment extends Fragment {
 		list_carnet_obj = o.getListCarnet();
 
 		if (list_carnet_obj.size() < 5) {
-			list_carnet_titre.add("+ Ajouter un carnet ["
+			list_carnet_titre.add(getResources().getString(R.string.AddCarnet)
 					+ list_carnet_obj.size() + "/5]");
 		}
 		for (int i = 0; i < 5; i++) {
@@ -472,7 +458,7 @@ public class CarnetFragment extends Fragment {
 
 		adapter.notifyDataSetChanged();
 
-		Toast.makeText(getActivity(), "Mise a jour", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), getResources().getString(R.string.maj2), Toast.LENGTH_SHORT).show();
 	}
 
 	/*
@@ -502,7 +488,7 @@ public class CarnetFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -515,7 +501,7 @@ public class CarnetFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			CarnetDB.setConnection(con);
@@ -534,7 +520,7 @@ public class CarnetFragment extends Fragment {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				Toast.makeText(getActivity(), "suppression effectué",
+				Toast.makeText(getActivity(), getResources().getString(R.string.DeleteOk),
 						Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
@@ -569,9 +555,8 @@ public class CarnetFragment extends Fragment {
 
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Log.d("", "je suis avant le chargement");
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 		}
@@ -582,22 +567,20 @@ public class CarnetFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
-			Log.d("", " titre changement" + varTmp);
 			CarnetDB.setConnection(con);
 
 			try {
 				carnet.setTitre(varTmp);
 				carnet.update();
-				resultat = "Le carnet a bien été mis a jour";
+				resultat = getResources().getString(R.string.carnetMaj);
 				ok = true;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(" : " + carnet.toString());
 			return ok;
 		}
 
@@ -605,7 +588,7 @@ public class CarnetFragment extends Fragment {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				Toast.makeText(getActivity(), "Changement effectué.",
+				Toast.makeText(getActivity(), getResources().getString(R.string.maj),
 						Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import com.example.projetgroupe.ShakeDetector.OnShakeListener;
 
 import modele.NoteDB;
-import modele.Session;
 import modele.UserDB;
 import myconnections.DBConnection;
 import android.app.AlertDialog;
@@ -38,7 +37,6 @@ public class AccueilFragment extends Fragment {
 	ArrayList<NoteDB> list_note_obj = null;
 	ArrayList<String> list_note_titre = null;
 	AlertDialog alert = null;
-	GetListnoteDB glcDB = null;
 	ArrayAdapter<String> adapter = null;
 	
 	private ProgressDialog pgd = null;
@@ -105,7 +103,6 @@ public class AccueilFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				NoteDB noteToSend = listFullNote.get(position);
-				System.out.println("noteToSend : "+noteToSend.toString());
 				Intent noteIntent = new Intent(getActivity(),
 						NoteDetail.class);
 				noteIntent.putExtra("note", noteToSend);
@@ -125,80 +122,7 @@ public class AccueilFragment extends Fragment {
 		refreshData();
 		
 	}
-	class GetListnoteDB extends AsyncTask<String, Integer, Boolean> {
-		private String resultat = "";
-		private ProgressDialog pgd = null;
-		private boolean ok = false;
-		private ArrayList<NoteDB> list_note = null;
-
-		public GetListnoteDB(ActivityPrincipale activityPrincipale) {
-
-			link(activityPrincipale);
-			// TODO Auto-generated constructor stub
-		}
-
-		private void link(ActivityPrincipale activityPrincipale) {
-			// TODO Auto-generated method stub
-
-		}
-
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
-			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-			pgd.show();
-
-		}
-
-		@Override
-		protected Boolean doInBackground(String... arg0) {
-			if (con == null) {// premier invocation
-				con = new DBConnection().getConnection();
-			}
-			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
-				return false;
-			}
-			NoteDB.setConnection(con);
-			list_note = new ArrayList<NoteDB>();
-			try {
-				list_note = NoteDB.getUser(Session.getUser().getId_user());
-
-				ok = true;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return ok;
-
-		}
-
-		protected void onPostExecute(Boolean result) {
-			super.onPostExecute(result);
-			pgd.dismiss();
-			if (ok) {
-				list_note_titre.clear();
-				list_note_obj = list_note;
-
-				for (int i = 0; i < list_note_obj.size(); i++) {
-						list_note_titre.add(list_note_obj.get(i).getTitre());
-						
-				}
-				adapter.notifyDataSetChanged();
-
-				
-				Toast.makeText(getActivity(),
-						"Mise a jour",
-						Toast.LENGTH_SHORT).show();
-			} else {
-				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
-						.show();
-			}
-		}
-
-	}
+	
 	
 	/*
 	 * ===========================================
@@ -209,7 +133,6 @@ public class AccueilFragment extends Fragment {
 		list_note_titre.clear();
 		UserDB o =  (UserDB) getActivity().getIntent().getSerializableExtra("user");
 		listFullNote = o.getFullNote();
-		System.out.println(">>> :"+listFullNote.toString());
 		
 		for (int i = 0; i < listFullNote.size(); i++) {
 				list_note_titre.add(listFullNote.get(i).getTitre());
@@ -220,7 +143,7 @@ public class AccueilFragment extends Fragment {
 
 		
 		Toast.makeText(getActivity(),
-				"Mise a jour",
+				getResources().getString(R.string.maj),
 				Toast.LENGTH_SHORT).show();
 	}
 }

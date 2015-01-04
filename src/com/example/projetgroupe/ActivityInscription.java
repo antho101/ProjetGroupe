@@ -71,7 +71,7 @@ public class ActivityInscription extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(ActivityInscription.this);
-			pgd.setMessage("inscription en cours");
+			pgd.setMessage(getResources().getString(R.string.ins));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -96,9 +96,6 @@ public class ActivityInscription extends Activity {
 			logTmp = "hh@gmail.be";
 			mdpTmp = "hh";
 			pseudoTmp = "hh";
-			// ligne pour éviter de tapper h24 les logins quand on try le projet
-			// logTmp = "alex7170@gmail.com";
-			// mdpTmp = "azerty";
 			String email = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z]+(\\.[A-Za-z]+)*(\\.[A-Za-z]{2,})$";
 
 			if (!pseudoTmp.isEmpty()) {
@@ -116,17 +113,17 @@ public class ActivityInscription extends Activity {
 							}
 
 						} else {
-							resultat = "Veuillez entrez un mot de passe.";
+							resultat = getResources().getString(R.string.entreMDP);
 						}
 					} else {
-						resultat = "Veuillez entrez une adresse email valide.";
+						resultat = getResources().getString(R.string.entreemail);
 					}
 
 				} else {
-					resultat = "Veuillez entre votre email.";
+					resultat = getResources().getString(R.string.entreemai);
 				}
 			} else {
-				resultat = "Veuillez entrez votre pseudo.";
+				resultat = getResources().getString(R.string.entrepseu);
 			}
 			return ok;
 		}
@@ -137,7 +134,7 @@ public class ActivityInscription extends Activity {
 			pgd.dismiss();
 			if (ok) {
 				Toast.makeText(getApplicationContext(),
-						"Inscription réussi, veuillez vous connecter !",
+						getResources().getString(R.string.successins),
 						Toast.LENGTH_SHORT).show();
 				activityParent.finish();
 			} else {

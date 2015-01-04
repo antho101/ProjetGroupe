@@ -53,5 +53,89 @@
      
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-
+	
+    
+    <!-- Accueil Fragment -->
+    <string name="checkie"> Error: check the Internet connection</string>
+    <string name="load">Charging </string>
+    <string name="maj">Update performed</string>
+    <string name="maj2">Update</string>
+    
+    <!-- Activity Inscription -->
+    <string name="ins"> Current subscribers</string>
+    <string name="entreMDP">Please enter a password.</string>
+    <string name="entreemail">Please enter a valid email address.</string>
+    <string name="entreemai">Please enter your email.</string>
+    <string name="entrepseu">Please enter your nickname.</string>
+    <string name="successins">successful registration, please login!</string>
+    
+    <!-- ActivityNoteListe -->
+    <string name="Note_Delete">Delete </string>
+    <string name="Note_title">Change title</string>
+    <string name="ChangeCon">Change contents</string>
+    <string name="ChangeTiNo">Change the title of the note</string>
+    <string name="ChangeANL">Change</string>
+     <string name="ChangeANUL">Cancel</string>
+    <string name="ChangeCN">Change the contents of the note</string>
+     <string name="AddNote">+ Add note </string>
+     <string name="DeleteSu">suppression performed</string>
+     
+     <!-- ActivityNote -->
+     <string name="AddCarnet">+ Add Book [</string>
+     
+     <!-- ActivityPrincipale -->
+     <string name="apropos">Subject: \ n \ NBLOC pad with online backup for different items. Provide for the concept category and title \ n \ nDeveloppeur. \ N \ n anthony.lattuca@condorcet.be \ n alexandre.rosati@condorcet.be</string>
+     <string name="ok">OK</string>
+     <string name="logout">Logout successful! </string>
+     <string name="erreurAP">An unexpected error has occurred! </string>
+     <string name="synchro"> successful synchronization</string>
+     
+     <!-- CarnetFragment -->
+     <string name="NomC">Book Name</string>
+     <string name="Carnet">Notebook : </string>
+     <string name="NewCarn">Please enter the new name of the book:</string>
+     <string name="AddC">Add</string>
+     <string name="ChangeTC">Change the title </string>
+     <string name="actionC">Action : </string>
+     <string name="Changetdc">Change the title</string>
+     <string name="ChampsV"> Empty field!</string>
+     <string name="DeleteOk"> suppression performed </string>
+     <string name="carnetMaj">The book has been updated </string>
+     
+     
+     <!-- EcrireNote -->
+     <string name="insertN">successful insertion of your note</string>
+     <string name="Prob">Problem </string>
+     <string name="insertT">Please enter a title</string>
+     <string name="insertC">Please enter a Content</string>
+     
+     <!-- MainActivity -->
+     <string name="LMinco"> Login and Password incorrect!</string>
+     <string name="Minco">Please enter your password.</string>
+     <string name="Linco">Please enter your email. </string>
+     
+     <!-- MonCompteFragment -->
+     <string name="pseudo">Alias </string>
+     <string name="Npseudo">New Nickname </string>
+     <string name="VNpseudo">Please enter the new username</string>
+     <string name="mdp">password </string>
+     <string name="Nmdp">New Password</string>
+     <string name="Vmdp">Password Verification</string>
+     <string name="VNmdp">Please enter the new password</string>
+     <string name="VANmdp">Please enter the password again </string>
+     <string name="desin">To unsubscribe</string>
+     <string name="desinV">Do you really want to unsubscribe? </string>
+     <string name="yes">Yes</string>
+     <string name="no">No</string>
+     <string name="pseudoV">Error: empty username </string>
+     <string name="mdpI"> incoherent Password </string>
+     <string name="mdpN">you haven t written a password</string>
+     <string name="DE">Unsubscribe done</string>
+     
+     <!-- NoteDetail -->
+     <string name="contenu">Content </string>
+     <string name="Ccontenu">Change the contents of the note</string>
+     <string name="NoteS"> deleted </string>
+    
+    
 </resources>

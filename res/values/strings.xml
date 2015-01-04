@@ -58,10 +58,10 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/icon_accueil</item>
-        <item>@drawable/icon_carnet</item>
-        <item>@drawable/icon_moncompte</item>
-        <item>@drawable/icon_deconnexion</item>
+        <item>@drawable/home2</item>
+        <item>@drawable/address</item>
+        <item>@drawable/user</item>
+        <item>@drawable/logouticon</item>
     </array>
 
     <!-- Content Description -->
@@ -85,4 +85,89 @@
     <string name="title_activity_activity_note_liste">ActivityNoteListe</string>
     <string name="title_activity_lined_edit_text">LinedEditText</string>
 
+    
+    <!-- Accueil Fragment -->
+    <string name="checkie">Erreur : vérifier la connexion internet !</string>
+    <string name="load">chargement en cours</string>
+    <string name="maj">Mise a jour effectué</string>
+    <string name="maj2">Mise a jour</string>
+    
+    <!-- Activity Inscription -->
+    <string name="ins">inscription en cours</string>
+    <string name="entreMDP">Veuillez entrez un mot de passe.</string>
+    <string name="entreemail">Veuillez entrez une adresse email valide.</string>
+    <string name="entreemai">Veuillez entre votre email.</string>
+    <string name="entrepseu">Veuillez entrez votre pseudo.</string>
+    <string name="successins">Inscription réussi, veuillez vous connecter !</string>
+    
+    <!-- ActivityNoteListe -->
+    <string name="Note_Delete">Supprimer</string>
+    <string name="Note_title">Changer  le titre</string>
+    <string name="ChangeCon">Changer le contenu</string>
+    <string name="ChangeTiNo">Changer le titre de la note</string>
+    <string name="ChangeANL">Changer</string>
+     <string name="ChangeANUL">Annuler</string>
+    <string name="ChangeCN">Changer le contenu de la note</string>
+     <string name="AddNote">+ Ajouter une note</string>
+     <string name="DeleteSu">suppression effectué</string>
+     
+     <!-- ActivityNote -->
+     <string name="AddCarnet">+ Ajouter un carnet [</string>
+     
+     <!-- ActivityPrincipale -->
+     <string name="apropos">Sujet:\n\nBloc-notes avec sauvegarde en ligne des différents articles. Prévoir la notion de catégorie et de titre.\n\nDeveloppeur:\n\n- anthony.lattuca@condorcet.be\n- alexandre.rosati@condorcet.be</string>
+     <string name="ok">OK</string>
+     <string name="logout">Déconnexion réussis !</string>
+     <string name="erreurAP">Une erreur inattendue est survenue !</string>
+     <string name="synchro">Synchronisation réussis</string>
+     
+     <!-- CarnetFragment -->
+     <string name="NomC">Nom du carnet</string>
+     <string name="Carnet">Carnet : </string>
+     <string name="NewCarn">Veuillez entrer le nouveau nom du carnet :</string>
+     <string name="AddC">Ajouter</string>
+     <string name="ChangeTC">Changer le titre</string>
+     <string name="actionC">Action : </string>
+     <string name="Changetdc">Changer le titre du carnet</string>
+     <string name="ChampsV">Champ vide !</string>
+     <string name="DeleteOk">suppression effectué</string>
+     <string name="carnetMaj">Le carnet a bien été mis a jour</string>
+     
+     
+     <!-- EcrireNote -->
+     <string name="insertN">insertion de votre note réussis</string>
+     <string name="Prob">Problème</string>
+     <string name="insertT">Veuillez entrez un titre</string>
+     <string name="insertC">Veuillez entrez un contenu</string>
+     
+     <!-- MainActivity -->
+     <string name="LMinco">Login et Mot de passe incorrecte !</string>
+     <string name="Minco">Veuillez entrez votre mot de passe.</string>
+     <string name="Linco">Veuillez entre votre email.</string>
+     
+     <!-- MonCompteFragment -->
+     <string name="pseudo">Pseudo</string>
+     <string name="Npseudo">Nouveau Pseudo</string>
+     <string name="VNpseudo">Veuillez entrer le nouveau pseudo</string>
+     <string name="mdp">mot de passe</string>
+     <string name="Nmdp">Nouveau mot de passe</string>
+     <string name="Vmdp">Vérification du mot de passe</string>
+     <string name="VNmdp">Veuillez entrer le nouveau mot de passe</string>
+     <string name="VANmdp">Veuillez entrer à nouveau le mot de passe</string>
+     <string name="desin">Se desinscrire</string>
+     <string name="desinV">Voulez-vous vraiment vous désinscrire?</string>
+     <string name="yes">Oui</string>
+     <string name="no">Non</string>
+     <string name="pseudoV">Erreur : pseudo vide !</string>
+     <string name="mdpI">Mot de passe incohérent</string>
+     <string name="mdpN">vous n avez écrit aucun mot de passe</string>
+     <string name="DE">Desinscription effectué</string>
+     
+     <!-- NoteDetail -->
+     <string name="contenu">Contenu</string>
+     <string name="Ccontenu">Changer le contenu de la note</string>
+     <string name="NoteS">Note supprimé</string>
+     
+     
+     
 </resources>

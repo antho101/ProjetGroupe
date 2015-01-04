@@ -49,7 +49,6 @@ public class MonCompteFragment extends Fragment {
 				container, false);
 		tmpUser = (UserDB) getActivity().getIntent().getSerializableExtra(
 				"user");
-		Log.d("", tmpUser.toString());
 		btn_mycompte_pseudochange = (Button) rootView
 				.findViewById(R.id.btn_mycompte_pseudochange);
 		btn_mycompte_pseudochange
@@ -58,14 +57,13 @@ public class MonCompteFragment extends Fragment {
 					public void onClick(View v) {
 						flag = false;
 						newPseudo = new EditText(getActivity());
-						// Set the default text to a link of the Queen
-						newPseudo.setHint("Pseudo");
+						newPseudo.setHint(getResources().getString(R.string.pseudo));
 
 						alert = new AlertDialog.Builder(getActivity())
-								.setTitle("Nouveau pseudo")
-								.setMessage("Veuillez entrer le nouveau pseudo")
+								.setTitle(getResources().getString(R.string.Npseudo))
+								.setMessage(getResources().getString(R.string.VNpseudo))
 								.setView(newPseudo)
-								.setPositiveButton("Changer",
+								.setPositiveButton(getResources().getString(R.string.ChangeANL),
 										new DialogInterface.OnClickListener() {
 											public void onClick(
 													DialogInterface dialog,
@@ -76,7 +74,7 @@ public class MonCompteFragment extends Fragment {
 
 											}
 										})
-								.setNegativeButton("Annuler",
+								.setNegativeButton(getResources().getString(R.string.ChangeANUL),
 										new DialogInterface.OnClickListener() {
 											public void onClick(
 													DialogInterface dialog,
@@ -98,41 +96,39 @@ public class MonCompteFragment extends Fragment {
 				nouveauCarnet2 = new EditText(getActivity());
 
 				// Set the default text to a link of the Queen
-				nouveau.setHint("mot de passe");
-				nouveauCarnet2.setHint("Vérification du mot de passe");
+				nouveau.setHint(getResources().getString(R.string.mdp));
+				nouveauCarnet2.setHint(getResources().getString(R.string.Vmdp));
 
 				alert = new AlertDialog.Builder(getActivity())
-						.setTitle("Nouveau mot de passe")
-						.setMessage("Veuillez entrer le nouveau mot de passe")
+						.setTitle(getResources().getString(R.string.Nmdp))
+						.setMessage(getResources().getString(R.string.VNmdp))
 						.setView(nouveau)
 
-						.setPositiveButton("Changer",
+						.setPositiveButton(getResources().getString(R.string.ChangeANL),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
 										alert = new AlertDialog.Builder(
 												getActivity())
 												.setTitle(
-														"Nouveau mot de passe")
+														getResources().getString(R.string.Nmdp))
 												.setMessage(
-														"Veuillez entrer à nouveau le mot de passe")
+														getResources().getString(R.string.VANmdp))
 												.setView(nouveauCarnet2)
 
 												.setPositiveButton(
-														"Changer",
+														getResources().getString(R.string.ChangeANL),
 														new DialogInterface.OnClickListener() {
 															public void onClick(
 																	DialogInterface dialog,
 																	int whichButton) {
-																Log.d("", "je suis avant l'execution");
 																epDM = new EditMdpDB(
 																		(ActivityPrincipale) getActivity());
-																Log.d("", "epDb: "+epDM);
 																epDM.execute();
 															}
 														})
 												.setNegativeButton(
-														"Annuler",
+														getResources().getString(R.string.ChangeANUL),
 														new DialogInterface.OnClickListener() {
 															public void onClick(
 																	DialogInterface dialog,
@@ -141,7 +137,7 @@ public class MonCompteFragment extends Fragment {
 														}).show();
 									}
 								})
-						.setNegativeButton("Annuler",
+						.setNegativeButton(getResources().getString(R.string.ChangeANUL),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
@@ -159,9 +155,9 @@ public class MonCompteFragment extends Fragment {
 				nouveau = new EditText(getActivity());
 
 				alert = new AlertDialog.Builder(getActivity())
-						.setTitle("Se desinscrire")
-						.setMessage("Voulez-vous vraiment vous désinscrire?")
-						.setPositiveButton("Oui",
+						.setTitle(getResources().getString(R.string.desin))
+						.setMessage(getResources().getString(R.string.desinV))
+						.setPositiveButton(getResources().getString(R.string.yes),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
@@ -172,7 +168,7 @@ public class MonCompteFragment extends Fragment {
 
 									}
 								})
-						.setNegativeButton("Non",
+						.setNegativeButton(getResources().getString(R.string.no),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
@@ -211,7 +207,7 @@ public class MonCompteFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 		}
@@ -222,7 +218,7 @@ public class MonCompteFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			UserDB.setConnection(con);
@@ -236,7 +232,7 @@ public class MonCompteFragment extends Fragment {
 					e.printStackTrace();
 				}
 			}else{
-				resultat = "Erreur : pseudo vide !";
+				resultat = getResources().getString(R.string.pseudoV);
 
 			}
 			
@@ -247,7 +243,7 @@ public class MonCompteFragment extends Fragment {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				Toast.makeText(getActivity(), "Changement effectué.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), getResources().getString(R.string.maj), Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
 						.show();
@@ -280,9 +276,8 @@ public class MonCompteFragment extends Fragment {
 
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Log.d("", "je suis avant le chargement");
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 		}
@@ -293,7 +288,7 @@ public class MonCompteFragment extends Fragment {
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			UserDB.setConnection(con);
@@ -309,15 +304,15 @@ public class MonCompteFragment extends Fragment {
 							e.printStackTrace();
 						}
 					}else{
-						resultat = "Mot de passe incohérent";
+						resultat = getResources().getString(R.string.mdpI);
 					}
 					
 				}else{
-					resultat = "vous n'avez écrit aucun mot de passe";
+					resultat = getResources().getString(R.string.mdpN);
 				}
 				
 			}else{
-				resultat = "vous n'avez écrit aucun mot de passe";
+				resultat = getResources().getString(R.string.mdpN);
 			}
 			return ok;
 		}
@@ -326,7 +321,7 @@ public class MonCompteFragment extends Fragment {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (ok) {
-				Toast.makeText(getActivity(), "Changement effectué.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), getResources().getString(R.string.maj), Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
 						.show();
@@ -355,7 +350,7 @@ public class MonCompteFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(getActivity());
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getResources().getString(R.string.load));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -363,12 +358,11 @@ public class MonCompteFragment extends Fragment {
 
 		@Override
 		protected Boolean doInBackground(String... arg0) {
-			System.out.println("Avant changement : "+tmpUser.toString());
 			if (con == null) {// premier invocation
 				con = new DBConnection().getConnection();
 			}
 			if (con == null) {
-				resultat = "Erreur : vérifier la connexion internet !";
+				resultat = getResources().getString(R.string.checkie);
 				return false;
 			}
 			UserDB.setConnection(con);
@@ -379,7 +373,6 @@ public class MonCompteFragment extends Fragment {
 				System.out.println(e.getMessage());
 				// TODO Auto-generated catch block
 			}
-			System.out.println("Aprés changement : "+tmpUser.toString());
 			return ok;
 		}
 
@@ -388,7 +381,7 @@ public class MonCompteFragment extends Fragment {
 			pgd.dismiss();
 			if (ok) {
 				getActivity().finish();
-				Toast.makeText(getActivity(), "Desinscription effectué",
+				Toast.makeText(getActivity(),getResources().getString(R.string.DE),
 						Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getActivity(), resultat, Toast.LENGTH_SHORT)
